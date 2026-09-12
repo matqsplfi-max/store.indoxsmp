@@ -19,7 +19,7 @@
       </a>
     </div>
     <div class="nav-links">
-      <!-- PILIHAN BAHASA -->
+      <!-- PILIHAN BAHASA DI NAVBAR -->
       <select id="lang-switcher" class="lang-select" onchange="switchLanguage(this.value)">
         <option value="id">🇮🇩 ID</option>
         <option value="en">🇬🇧 EN</option>
@@ -85,16 +85,25 @@
     </div>
   </header>
 
-  <!-- MODAL LOGIN IDENTITAS PLAYER -->
+  <!-- MODAL LOGIN IDENTITAS PLAYER & PILIHAN BAHASA -->
   <div class="modal-overlay" id="login-modal">
     <div class="modal-content">
       <div class="modal-header">
         <h3 data-i18n="modal_title">MASUKKAN IDENTITAS PLAYER</h3>
         <button class="close-btn" onclick="closeLoginModal()">&times;</button>
       </div>
-      <p data-i18n="modal_desc">Masukkan username player Minecraft kamu agar item otomatis dikirimkan ke in-game setelah checkout.</p>
+      <p data-i18n="modal_desc">Pilih bahasa, masukkan username player Minecraft kamu, dan pilih edisi game kamu.</p>
       
       <form id="player-form" onsubmit="savePlayer(event)">
+        <!-- PILIHAN BAHASA DI DALAM MODAL -->
+        <div class="form-group">
+          <label data-i18n="modal_lang_label">PILIH BAHASA / SELECT LANGUAGE:</label>
+          <select id="modal-lang-select" class="modal-select-lang" onchange="switchLanguage(this.value)">
+            <option value="id">🇮🇩 Indonesia</option>
+            <option value="en">🇬🇧 English</option>
+          </select>
+        </div>
+
         <div class="form-group">
           <label data-i18n="modal_ign_label">USERNAME MINECRAFT (IGN):</label>
           <input type="text" id="input-ign" placeholder="Contoh: Westernish" required />
@@ -129,11 +138,16 @@
     let currentLang = localStorage.getItem('indox_lang') || 'id';
 
     document.addEventListener('DOMContentLoaded', () => {
+      // Sinkronkan pilihan bahasa di dropdown navbar & modal
       document.getElementById('lang-switcher').value = currentLang;
+      document.getElementById('modal-lang-select').value = currentLang;
+      
       applyTranslations(currentLang);
       updateCartCount();
       updatePlayerUI();
-      if (!playerData) {
+
+      // PAKSA POP-UP MUNCUL JIKA BELUM ADA DATA PLAYER
+      if (!playerData || !playerData.ign) {
         openLoginModal();
       }
     });
@@ -141,11 +155,26 @@
     function switchLanguage(lang) {
       currentLang = lang;
       localStorage.setItem('indox_lang', lang);
+      
+      // Sinkronkan kedua dropdown bahasa (navbar & modal) secara bersamaan
+      document.getElementById('lang-switcher').value = lang;
+      document.getElementById('modal-lang-select').value = lang;
+
       applyTranslations(lang);
     }
 
-    function openLoginModal() { document.getElementById('login-modal').style.display = 'flex'; }
-    function closeLoginModal() { document.getElementById('login-modal').style.display = 'none'; }
+    function openLoginModal() { 
+      document.getElementById('login-modal').style.display = 'flex'; 
+    }
+    
+    function closeLoginModal() { 
+      // Cegah tutup paksa jika player sama sekali belum isi data
+      if (!playerData || !playerData.ign) {
+        alert(currentLang === 'id' ? 'Harap isi IGN terlebih dahulu!' : 'Please fill in your IGN first!');
+        return;
+      }
+      document.getElementById('login-modal').style.display = 'none'; 
+    }
 
     function savePlayer(e) {
       e.preventDefault();
@@ -156,7 +185,7 @@
       playerData = { ign, edition };
       localStorage.setItem('indox_player', JSON.stringify(playerData));
       updatePlayerUI();
-      closeLoginModal();
+      document.getElementById('login-modal').style.display = 'none';
     }
 
     function updatePlayerUI() {
