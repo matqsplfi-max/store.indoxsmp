@@ -161,8 +161,18 @@ body {
   margin: 15px 0;
 }
 
-.hero-sub { color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; }
-.badge-pill, .badge-tag { color: var(--primary-red); font-size: 0.8rem; font-weight: 800; letter-spacing: 1.5px; }
+.hero-sub { 
+  color: var(--text-muted); 
+  font-size: 1.05rem; 
+  line-height: 1.6; 
+}
+
+.badge-pill, .badge-tag { 
+  color: var(--primary-red); 
+  font-size: 0.8rem; 
+  font-weight: 800; 
+  letter-spacing: 1.5px; 
+}
 
 /* PLAYER PROFILE CARD */
 .player-profile-card {
@@ -187,9 +197,23 @@ body {
   border: 2px solid var(--primary-red);
 }
 
-.player-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 700; }
-.player-ign-title { font-size: 1.2rem; font-weight: 800; color: #fff; }
-.player-edition-sub { font-size: 0.8rem; color: var(--primary-red); font-weight: 600; }
+.player-label { 
+  font-size: 0.75rem; 
+  color: var(--text-muted); 
+  font-weight: 700; 
+}
+
+.player-ign-title { 
+  font-size: 1.2rem; 
+  font-weight: 800; 
+  color: #fff; 
+}
+
+.player-edition-sub { 
+  font-size: 0.8rem; 
+  color: var(--primary-red); 
+  font-weight: 600; 
+}
 
 .btn-ganti-account {
   margin-left: auto;
@@ -202,7 +226,10 @@ body {
   font-size: 0.8rem;
   font-weight: 600;
 }
-.btn-ganti-account:hover { background: var(--primary-red); }
+
+.btn-ganti-account:hover { 
+  background: var(--primary-red); 
+}
 
 /* LANDING CATEGORY BUTTONS */
 .landing-actions {
@@ -366,6 +393,23 @@ body {
 .form-group input[type="text"] { width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--card-border); padding: 12px; border-radius: 10px; color: #fff; outline: none; }
 .form-group input[type="text"]:focus { border-color: var(--primary-red); }
 
+/* DROPDOWN PILIHAN BAHASA DI DALAM MODAL */
+.modal-select-lang {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  padding: 12px;
+  border-radius: 10px;
+  color: #fff;
+  outline: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+.modal-select-lang option {
+  background: #120508;
+  color: #fff;
+}
+
 .edition-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .edition-option input { display: none; }
 .edition-box { display: block; text-align: center; padding: 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--card-border); border-radius: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
@@ -381,7 +425,7 @@ body {
   .category-buttons-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.2rem; }
   .navbar { padding: 14px 4%; }
-  .nav-links a:not(.cart-btn) { display: none; } /* Sembunyikan navigasi teks berlebih di layar HP kecil */
+  .nav-links a:not(.cart-btn) { display: none; }
 }
 
 @media (min-width: 1024px) {
