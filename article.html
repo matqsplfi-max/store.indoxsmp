@@ -1,46 +1,243 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informasi & Syarat Ketentuan - INDOX SMP</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keranjang Belanja — IndoxSMP Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .cart-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .cart-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 25px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .item-info h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .item-info p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .item-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .qty-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .qty-btn:hover {
+      background: var(--primary-red);
+    }
+
+    .item-price {
+      font-weight: 700;
+      color: #ff4d6d;
+      min-width: 100px;
+      text-align: right;
+    }
+
+    .checkout-summary {
+      background: rgba(255, 42, 75, 0.05);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .summary-row.total {
+      border-top: 1px solid var(--card-border);
+      padding-top: 15px;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .empty-cart-msg {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-muted);
+    }
+  </style>
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo">INDOX <span>STORE</span></div>
-        <nav>
-            <a href="index.html">Katalog</a>
-            <a href="article.html" class="active">Informasi</a>
-        </nav>
-    </header>
 
-    <main class="container article-container">
-        <article class="article-content">
-            <h1>Syarat, Ketentuan & Panduan Pembelian</h1>
-            <p class="meta">Terakhir diperbarui: September 2026</p>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <a href="index.html" class="brand-logo" style="text-decoration: none; color: inherit;">
+        Indox<span class="gradient-text">SMP</span>
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">&larr; Kembali ke Store</a>
+    </div>
+  </nav>
 
-            <hr>
+  <div class="cart-container">
+    <div class="badge-tag">YOUR ORDER</div>
+    <h2 class="section-title">Keranjang Belanja</h2>
+    <p class="section-desc">Periksa kembali pesanan item kamu sebelum melakukan pembayaran.</p>
 
-            <h2>1. Cara Melakukan Pembelian</h2>
-            <p>Semua transaksi pembelian rank dan item diatur melalui server Discord resmi INDOX SMP. Ikuti langkah berikut:</p>
-            <ol>
-                <li>Pilih item yang ingin kamu beli di halaman <a href="index.html">Katalog</a>.</li>
-                <li>Klik tombol <strong>Beli via Discord</strong> untuk masuk ke server Discord kami.</li>
-                <li>Buka channel <code>#ticket-store</code> dan buat tiket baru.</li>
-                <li>Sebutkan Username Minecraft dan barang yang ingin dibeli.</li>
-            </ol>
+    <!-- CARD INFO PLAYER -->
+    <div class="cart-card" id="player-summary-card">
+      <h3 style="margin-bottom: 10px; font-size: 1.1rem;">👤 Data Penerima Item</h3>
+      <p id="player-summary-info" style="color: var(--text-muted); font-size: 0.95rem;">
+        Belum ada data player. Silakan isi username di halaman utama.
+      </p>
+    </div>
 
-            <h2>2. Metode Pembayaran</h2>
-            <p>Kami menerima pembayaran melalui:</p>
-            <ul>
-                <li>QRIS (BCA, Mandiri, BRI, GoPay, OVO, Dana, ShopeePay)</li>
-                <li>Transfer Bank Direct</li>
-            </ul>
+    <!-- DAFTAR ITEM KERANJANG -->
+    <div class="cart-card">
+      <h3 style="margin-bottom: 15px; font-size: 1.1rem;">🛒 Item Dalam Keranjang</h3>
+      <div id="cart-items-list">
+        <!-- Item di-generate secara otomatis lewat JS -->
+      </div>
 
-            <h2>3. Kebijakan Pengembalian (Refund)</h2>
-            <p>Semua pembelian bersifat final. Tidak ada pengembalian uang (refund) setelah rank atau item telah dikirimkan ke akun Minecraft kamu, kecuali terjadi kesalahan sistem dari pihak server.</p>
-        </article>
-    </main>
+      <!-- SUMMARY -->
+      <div class="checkout-summary">
+        <div class="summary-row">
+          <span>Total Item</span>
+          <span id="summary-qty">0 Item</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total Bayar</span>
+          <span id="summary-total" class="gradient-text">Rp 0</span>
+        </div>
+      </div>
+
+      <button id="btn-checkout" class="btn-primary" style="width: 100%; margin-top: 20px; font-size: 1.05rem;" onclick="processCheckout()">
+        Lanjut Ke Pembayaran &rarr;
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('indox_cart')) || [];
+    let playerData = JSON.parse(localStorage.getItem('indox_player')) || null;
+
+    function renderCart() {
+      // Render info player
+      const playerInfoEl = document.getElementById('player-summary-info');
+      if (playerData && playerData.ign) {
+        playerInfoEl.innerHTML = `Username (IGN): <strong>${playerData.ign}</strong> | Edisi: <strong>${playerData.edition || 'JAVA'} Edition</strong>`;
+      } else {
+        playerInfoEl.innerHTML = `⚠️ <span style="color: #ff4d6d;">Kamu belum memasukkan Username Minecraft!</span> <a href="index.html" style="color:#fff;">Klik di sini untuk isi data</a>.`;
+      }
+
+      // Render daftar item
+      const listEl = document.getElementById('cart-items-list');
+      if (cart.length === 0) {
+        listEl.innerHTML = `
+          <div class="empty-cart-msg">
+            <p>Keranjang belanja kamu masih kosong.</p>
+            <br>
+            <a href="index.html" class="btn-primary" style="text-decoration: none; display: inline-block;">Cari Produk &rarr;</a>
+          </div>
+        `;
+        document.getElementById('summary-qty').innerText = '0 Item';
+        document.getElementById('summary-total').innerText = 'Rp 0';
+        document.getElementById('btn-checkout').disabled = true;
+        document.getElementById('btn-checkout').style.opacity = '0.5';
+        return;
+      }
+
+      document.getElementById('btn-checkout').disabled = false;
+      document.getElementById('btn-checkout').style.opacity = '1';
+
+      let html = '';
+      let totalQty = 0;
+      let totalPrice = 0;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        totalQty += item.qty;
+        totalPrice += itemTotal;
+
+        html += `
+          <div class="cart-item">
+            <div class="item-info">
+              <h4>${item.name}</h4>
+              <p>${item.sub || 'Produk IndoxSMP'}</p>
+            </div>
+            <div class="item-controls">
+              <button class="qty-btn" onclick="updateQty(${index}, -1)">-</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" onclick="updateQty(${index}, 1)">+</button>
+              <div class="item-price">Rp ${itemTotal.toLocaleString('id-ID')}</div>
+            </div>
+          </div>
+        `;
+      });
+
+      listEl.innerHTML = html;
+      document.getElementById('summary-qty').innerText = `${totalQty} Item`;
+      document.getElementById('summary-total').innerText = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+    }
+
+    function updateQty(index, change) {
+      cart[index].qty += change;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      localStorage.setItem('indox_cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function processCheckout() {
+      if (!playerData || !playerData.ign) {
+        alert('Harap masukkan Username Minecraft (IGN) kamu terlebih dahulu di halaman utama!');
+        window.location.href = 'index.html';
+        return;
+      }
+      alert(`Terima kasih ${playerData.ign}! Pesanan kamu sedang diproses.`);
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCart);
+  </script>
 </body>
 </html>
