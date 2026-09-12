@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INDOX SMP Store — Ranks</title>
+  <title>INDOX SMP Store — Welcome</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -19,159 +19,65 @@
       </a>
     </div>
     <div class="nav-links">
-      <a href="index.html" class="active-link">RANKS</a>
-      <a href="article.html">CRATES & KEYS</a>
       <div id="user-header-area">
         <button class="btn-primary" onclick="openLoginModal()" style="padding: 8px 16px; font-size: 0.85rem;">MASUKKAN IGN</button>
       </div>
-      <a href="article.html" class="cart-btn">
+      <a href="article.html#cart-section" class="cart-btn">
         🛒 KERANJANG <span class="cart-badge" id="cart-count">0</span>
       </a>
     </div>
   </nav>
 
   <!-- HERO SECTION WITH PLAYER PROFILE -->
-  <header class="hero">
-    <div class="hero-left">
+  <header class="hero hero-landing">
+    <div class="hero-center-content">
       <div class="badge-pill">// OFFICIAL INDOXSMP STORE</div>
-      <h1 class="hero-title">Upgrade Your <br><span class="gradient-text">Adventure.</span></h1>
-      <p class="hero-sub">Rank eksklusif dan benefit terbaik untuk pengalaman bermain di IndoxSMP.</p>
+      <h1 class="hero-title">Upgrade Your <br><span class="gradient-text">Minecraft Experience.</span></h1>
+      <p class="hero-sub">Selamat datang di official store IndoxSMP. Masukkan IGN kamu dan pilih kategori produk yang ingin kamu beli.</p>
       
-      <!-- CARD TAMPILAN PROFILE PLAYER -->
-      <div class="player-profile-card" id="hero-player-card">
+      <!-- CARD PLAYER PROFILE -->
+      <div class="player-profile-card landing-profile" id="hero-player-card">
         <img id="player-avatar-head" src="https://mc-heads.net/avatar/steve/64" alt="Minecraft Skin" class="player-avatar-img" />
-        <div>
-          <div class="player-label">LOGGED IN PLAYER:</div>
+        <div style="text-align: left;">
+          <div class="player-label">AKUN DIPILIH:</div>
           <div id="player-ign-display" class="player-ign-title">Guest Player</div>
           <div id="player-edition-display" class="player-edition-sub">Java Edition</div>
         </div>
         <button onclick="openLoginModal()" class="btn-ganti-account">Ganti Akun</button>
       </div>
-    </div>
 
-    <div class="hero-right">
-      <div class="ip-card">
-        <div>
+      <!-- IP SERVER & AKSI STORE -->
+      <div class="landing-actions">
+        <h3 style="margin-bottom: 15px; font-weight: 800; font-size: 1.2rem;">PILIH KATEGORI STORE:</h3>
+        <div class="category-buttons-grid">
+          <a href="article.html#ranks-section" class="btn-category-card">
+            <div class="cat-icon">👑</div>
+            <div>
+              <div class="cat-title">RANKS STORE &rarr;</div>
+              <div class="cat-desc">Beli rank Indox+, Cosmix, Custom, & VIP</div>
+            </div>
+          </a>
+
+          <a href="article.html#crates-section" class="btn-category-card">
+            <div class="cat-icon">📦</div>
+            <div>
+              <div class="cat-title">CRATES & KEYS &rarr;</div>
+              <div class="cat-desc">Beli Spawners, Amethyst, Crimson, & Cobalt Keys</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="ip-card" style="margin-top: 30px; max-width: 500px; width: 100%;">
+        <div style="text-align: left;">
           <span class="ip-label">ALAMAT SERVER</span>
           <span class="ip-value">indoxsmp.net</span>
         </div>
         <button class="btn-copy" onclick="copyIP()">Salin IP</button>
       </div>
+
     </div>
   </header>
-
-  <!-- RANKS SECTION -->
-  <section class="section-container" id="ranks">
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 15px;">
-      <div>
-        <span class="badge-tag">// MEMBERSHIP</span>
-        <h2 class="section-title">CHOOSE YOUR RANK</h2>
-      </div>
-      <p class="section-desc" style="max-width: 350px;">Semakin tinggi rank, semakin banyak akses dan benefit yang kamu dapatkan di dalam server.</p>
-    </div>
-
-    <div class="ranks-grid">
-      
-      <!-- CARD 1: INDOX+ -->
-      <div class="rank-card">
-        <div class="rank-header">
-          <span class="rank-number">01</span>
-          <span class="rank-type-pill">PERMANENT RANK</span>
-        </div>
-        <h3 class="rank-name">INDOX+</h3>
-        <p class="rank-desc">Starter rank</p>
-        <div class="price-container">
-          <span class="strike-price">Rp 58.200</span>
-          <span class="rank-price">Rp 34.920</span>
-          <span class="price-discount">-40%</span>
-        </div>
-        <ul class="features">
-          <li>✓ 4 Homes</li>
-          <li>✓ Diamond Kit 1</li>
-          <li>✓ Fast AH buy</li>
-          <li>✓ Daily crate key</li>
-          <li>✓ 1M starter balance</li>
-        </ul>
-        <button class="btn-primary" style="width: 100%;" onclick="addToCart('INDOX+ Rank', 34920, 'Starter Rank')">BELI INDOX+ &gt;</button>
-      </div>
-
-      <!-- CARD 2: COSMIX -->
-      <div class="rank-card">
-        <div class="rank-header">
-          <span class="rank-number">02</span>
-          <span class="rank-type-pill">PERMANENT RANK</span>
-        </div>
-        <h3 class="rank-name">COSMIX</h3>
-        <p class="rank-desc">Step up rank</p>
-        <div class="price-container">
-          <span class="strike-price">Rp 118.800</span>
-          <span class="rank-price">Rp 71.280</span>
-          <span class="price-discount">-40%</span>
-        </div>
-        <ul class="features">
-          <li>✓ 6 Homes</li>
-          <li>✓ More AH slots</li>
-          <li>✓ Diamond Kit 2</li>
-          <li>✓ /echest</li>
-          <li>✓ /sfly (spawn)</li>
-          <li>✓ 3M starter balance</li>
-          <li>✓ Shards while playing</li>
-        </ul>
-        <button class="btn-primary" style="width: 100%;" onclick="addToCart('COSMIX Rank', 71280, 'Step Up Rank')">BELI COSMIX &gt;</button>
-      </div>
-
-      <!-- CARD 3: CUSTOM (POPULAR) -->
-      <div class="rank-card featured-card">
-        <div class="rank-header">
-          <span class="rank-number">03</span>
-          <span class="popular-badge">POPULAR</span>
-        </div>
-        <h3 class="rank-name">CUSTOM</h3>
-        <p class="rank-desc">Most popular</p>
-        <div class="price-container">
-          <span class="strike-price">Rp 238.800</span>
-          <span class="rank-price">Rp 143.280</span>
-          <span class="price-discount">-40%</span>
-        </div>
-        <ul class="features">
-          <li>✓ 8 Homes</li>
-          <li>✓ Netherite Kit</li>
-          <li>✓ /sfly (spawn)</li>
-          <li>✓ Shards while playing</li>
-          <li>✓ 5M starter balance</li>
-          <li>✓ No RTP cooldown</li>
-          <li>✓ /ecraft & /echest</li>
-        </ul>
-        <button class="btn-primary" style="width: 100%;" onclick="addToCart('CUSTOM Rank', 143280, 'Most Popular Rank')">BELI CUSTOM &gt;</button>
-      </div>
-
-      <!-- CARD 4: VIP (ULTIMATE) -->
-      <div class="rank-card">
-        <div class="rank-header">
-          <span class="rank-number">04</span>
-          <span class="ultimate-badge">ULTIMATE</span>
-        </div>
-        <h3 class="rank-name">VIP</h3>
-        <p class="rank-desc">The ultimate experience</p>
-        <div class="price-container">
-          <span class="strike-price">Rp 518.400</span>
-          <span class="rank-price">Rp 311.040</span>
-          <span class="price-discount">-40%</span>
-        </div>
-        <ul class="features">
-          <li>✓ 10 Homes</li>
-          <li>✓ Access /kit custom, cosmix, indox</li>
-          <li>✓ Netherite Kit [2]</li>
-          <li>✓ 10M starter balance</li>
-          <li>✓ No RTP cooldown</li>
-          <li>✓ /ecraft, /eanvil, /sfly, /echest</li>
-          <li>✓ Shards while playing</li>
-        </ul>
-        <button class="btn-primary" style="width: 100%;" onclick="addToCart('VIP Rank', 311040, 'Ultimate Rank')">BELI VIP &gt;</button>
-      </div>
-
-    </div>
-  </section>
 
   <!-- MODAL LOGIN IDENTITAS PLAYER -->
   <div class="modal-overlay" id="login-modal">
@@ -180,7 +86,7 @@
         <h3>MASUKKAN IDENTITAS PLAYER</h3>
         <button class="close-btn" onclick="closeLoginModal()">&times;</button>
       </div>
-      <p>Masukkan username player Minecraft kamu agar item otomatis dikirimkan setelah pembayaran.</p>
+      <p>Masukkan username player Minecraft kamu agar item otomatis dikirimkan ke in-game setelah checkout.</p>
       
       <form id="player-form" onsubmit="savePlayer(event)">
         <div class="form-group">
@@ -202,12 +108,12 @@
           </div>
         </div>
 
-        <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; margin-top: 10px;">Simpan & Masuk Store &rarr;</button>
+        <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; margin-top: 10px;">Simpan & Lanjut ke Store &rarr;</button>
       </form>
     </div>
   </div>
 
-  <div id="toast-notification" class="toast-hidden">Item ditambahkan!</div>
+  <div id="toast-notification" class="toast-hidden">Pesan Notifikasi</div>
 
   <script>
     let cart = JSON.parse(localStorage.getItem('indox_cart')) || [];
@@ -258,24 +164,6 @@
       }
     }
 
-    function addToCart(name, price, sub) {
-      if (!playerData) {
-        openLoginModal();
-        return;
-      }
-
-      const existingItem = cart.find(item => item.name === name);
-      if (existingItem) {
-        existingItem.qty += 1;
-      } else {
-        cart.push({ name, price, sub, qty: 1 });
-      }
-
-      localStorage.setItem('indox_cart', JSON.stringify(cart));
-      updateCartCount();
-      showToast(`${name} ditambahkan ke keranjang!`);
-    }
-
     function updateCartCount() {
       const count = cart.reduce((sum, item) => sum + item.qty, 0);
       document.getElementById('cart-count').innerText = count;
@@ -285,9 +173,7 @@
       const toast = document.getElementById('toast-notification');
       toast.innerText = msg;
       toast.className = 'toast-visible';
-      setTimeout(() => {
-        toast.className = 'toast-hidden';
-      }, 2500);
+      setTimeout(() => { toast.className = 'toast-hidden'; }, 2500);
     }
 
     function copyIP() {
