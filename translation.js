@@ -1,3 +1,5 @@
+// translations.js - Full Code
+
 const dict = {
   id: {
     btn_enter_ign: "MASUKKAN IGN",
@@ -100,7 +102,19 @@ function applyTranslations(lang) {
   elements.forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (dict[lang] && dict[lang][key]) {
-      el.innerText = dict[lang][key];
+      if (el.tagName === 'INPUT') {
+        el.placeholder = dict[lang][key];
+      } else {
+        if (el.children.length > 0) {
+          for (let node of el.childNodes) {
+            if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim() !== '') {
+              node.nodeValue = ' ' + dict[lang][key];
+            }
+          }
+        } else {
+          el.innerText = dict[lang][key];
+        }
+      }
     }
   });
 }
