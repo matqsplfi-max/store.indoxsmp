@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INDOX SMP Store — Crates & Keys</title>
+  <title>INDOX SMP Store — Catalog & Checkout</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -19,115 +19,222 @@
       </a>
     </div>
     <div class="nav-links">
-      <a href="index.html">&larr; RANKS</a>
-      <a href="article.html" class="active-link">CRATES & KEYS</a>
+      <a href="index.html">&larr; BERANDA</a>
+      <a href="#ranks-section">RANKS</a>
+      <a href="#crates-section">CRATES</a>
       <div id="user-header-area"></div>
+      <a href="#cart-section" class="cart-btn">
+        🛒 KERANJANG <span class="cart-badge" id="cart-count">0</span>
+      </a>
     </div>
   </nav>
 
-  <div class="section-container" style="margin-top: 40px;">
+  <div class="section-container" style="margin-top: 30px;">
     
-    <!-- SECTION CRATES & KEYS -->
-    <div style="margin-bottom: 30px;">
+    <!-- BANNER PLAYER INFO TERHUBUNG -->
+    <div class="player-strip-info">
+      <div style="display:flex; align-items:center; gap: 12px;">
+        <img id="cart-player-avatar" src="https://mc-heads.net/avatar/steve/32" style="width:32px; height:32px; border-radius:6px;" />
+        <div>
+          <span style="font-size:0.75rem; color:var(--text-muted); display:block;">ITEM AKAN DIKIRIM KE:</span>
+          <strong id="cart-player-ign" style="font-size:1rem; color:#fff;">Guest Player</strong> 
+          <span id="cart-player-edition" style="font-size:0.8rem; color:var(--primary-red); margin-left:8px;">(Java)</span>
+        </div>
+      </div>
+      <a href="index.html" class="btn-ganti-account" style="text-decoration:none;">Ganti Player</a>
+    </div>
+
+    <!-- 1. RANKS SECTION -->
+    <div id="ranks-section" style="margin-top: 40px;">
+      <span class="badge-tag">// MEMBERSHIP</span>
+      <h2 class="section-title">PILIK RANK KAMU</h2>
+      <p class="section-desc">Nikmati keuntungan eksklusif dengan pilihan rank terbaik di IndoxSMP.</p>
+
+      <div class="ranks-grid">
+        <!-- RANK 1 -->
+        <div class="rank-card">
+          <div class="rank-header">
+            <span class="rank-number">01</span>
+            <span class="rank-type-pill">PERMANENT</span>
+          </div>
+          <h3 class="rank-name">INDOX+</h3>
+          <p class="rank-desc">Starter rank</p>
+          <div class="price-container">
+            <span class="strike-price">Rp 58.200</span>
+            <span class="rank-price">Rp 34.920</span>
+          </div>
+          <ul class="features">
+            <li>✓ 4 Homes</li>
+            <li>✓ Diamond Kit 1</li>
+            <li>✓ Fast AH buy</li>
+            <li>✓ Daily crate key</li>
+            <li>✓ 1M starter balance</li>
+          </ul>
+          <button class="btn-primary" style="width: 100%;" onclick="addToCart('INDOX+ Rank', 34920, 'Permanent Rank')">+ TAMBAH KE KERANJANG</button>
+        </div>
+
+        <!-- RANK 2 -->
+        <div class="rank-card">
+          <div class="rank-header">
+            <span class="rank-number">02</span>
+            <span class="rank-type-pill">PERMANENT</span>
+          </div>
+          <h3 class="rank-name">COSMIX</h3>
+          <p class="rank-desc">Step up rank</p>
+          <div class="price-container">
+            <span class="strike-price">Rp 118.800</span>
+            <span class="rank-price">Rp 71.280</span>
+          </div>
+          <ul class="features">
+            <li>✓ 6 Homes</li>
+            <li>✓ More AH slots</li>
+            <li>✓ Diamond Kit 2</li>
+            <li>✓ /echest & /sfly</li>
+            <li>✓ 3M starter balance</li>
+          </ul>
+          <button class="btn-primary" style="width: 100%;" onclick="addToCart('COSMIX Rank', 71280, 'Permanent Rank')">+ TAMBAH KE KERANJANG</button>
+        </div>
+
+        <!-- RANK 3 -->
+        <div class="rank-card featured-card">
+          <div class="rank-header">
+            <span class="rank-number">03</span>
+            <span class="popular-badge">POPULAR</span>
+          </div>
+          <h3 class="rank-name">CUSTOM</h3>
+          <p class="rank-desc">Most popular</p>
+          <div class="price-container">
+            <span class="strike-price">Rp 238.800</span>
+            <span class="rank-price">Rp 143.280</span>
+          </div>
+          <ul class="features">
+            <li>✓ 8 Homes</li>
+            <li>✓ Netherite Kit</li>
+            <li>✓ /sfly & Shards</li>
+            <li>✓ 5M starter balance</li>
+            <li>✓ No RTP cooldown</li>
+          </ul>
+          <button class="btn-primary" style="width: 100%;" onclick="addToCart('CUSTOM Rank', 143280, 'Permanent Rank')">+ TAMBAH KE KERANJANG</button>
+        </div>
+
+        <!-- RANK 4 -->
+        <div class="rank-card">
+          <div class="rank-header">
+            <span class="rank-number">04</span>
+            <span class="ultimate-badge">ULTIMATE</span>
+          </div>
+          <h3 class="rank-name">VIP</h3>
+          <p class="rank-desc">The ultimate rank</p>
+          <div class="price-container">
+            <span class="strike-price">Rp 518.400</span>
+            <span class="rank-price">Rp 311.040</span>
+          </div>
+          <ul class="features">
+            <li>✓ 10 Homes</li>
+            <li>✓ Access All Kits</li>
+            <li>✓ Netherite Kit [2]</li>
+            <li>✓ 10M starter balance</li>
+            <li>✓ Full Command Access</li>
+          </ul>
+          <button class="btn-primary" style="width: 100%;" onclick="addToCart('VIP Rank', 311040, 'Permanent Rank')">+ TAMBAH KE KERANJANG</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. CRATES SECTION -->
+    <div id="crates-section" style="margin-top: 60px;">
       <span class="badge-tag">// RARE DROPS</span>
       <h2 class="section-title">CRATE KEYS</h2>
-      <p class="section-desc">Buka crate dan dapatkan item langka untuk membantu petualanganmu.</p>
+      <p class="section-desc">Buka crate dan dapatkan item langka serta bonus menarik.</p>
+
+      <div class="crates-grid">
+        <div class="crate-card">
+          <div class="crate-info">
+            <div class="crate-icon">📦</div>
+            <div>
+              <h4>SPAWNERS CRATE</h4>
+              <p>1 key per purchase</p>
+            </div>
+          </div>
+          <div class="crate-action">
+            <div class="crate-price">Rp 8.000</div>
+            <button class="btn-primary btn-sm" onclick="addToCart('Spawners Key', 8000, '1 Crate Key')">+ TAMBAH</button>
+          </div>
+        </div>
+
+        <div class="crate-card">
+          <div class="crate-info">
+            <div class="crate-icon">💎</div>
+            <div>
+              <h4>AMETHYST CRATE</h4>
+              <p>1 key per purchase</p>
+            </div>
+          </div>
+          <div class="crate-action">
+            <div class="crate-price">Rp 15.000</div>
+            <button class="btn-primary btn-sm" onclick="addToCart('Amethyst Key', 15000, '1 Crate Key')">+ TAMBAH</button>
+          </div>
+        </div>
+
+        <div class="crate-card">
+          <div class="crate-info">
+            <div class="crate-icon">🔥</div>
+            <div>
+              <h4>CRIMSON CRATE</h4>
+              <p>1 key per purchase</p>
+            </div>
+          </div>
+          <div class="crate-action">
+            <div class="crate-price">Rp 7.000</div>
+            <button class="btn-primary btn-sm" onclick="addToCart('Crimson Key', 7000, '1 Crate Key')">+ TAMBAH</button>
+          </div>
+        </div>
+
+        <div class="crate-card">
+          <div class="crate-info">
+            <div class="crate-icon">⚡</div>
+            <div>
+              <h4>COBALT CRATE</h4>
+              <p>1 key per purchase</p>
+            </div>
+          </div>
+          <div class="crate-action">
+            <div class="crate-price">Rp 5.000</div>
+            <button class="btn-primary btn-sm" onclick="addToCart('Cobalt Key', 5000, '1 Crate Key')">+ TAMBAH</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="crates-grid">
-      <div class="crate-card">
-        <div class="crate-info">
-          <div class="crate-icon">📦</div>
-          <div>
-            <h4>SPAWNERS CRATE</h4>
-            <p>1 key per purchase</p>
-          </div>
-        </div>
-        <div class="crate-action">
-          <div class="crate-price">Rp 8.000</div>
-          <button class="btn-primary btn-sm" onclick="addToCart('Spawners Crate Key', 8000, '1 Key')">BELI &gt;</button>
-        </div>
-      </div>
+    <!-- 3. PANEL KELOLA KERANJANG (DI BAGIAN BOWAH) -->
+    <div id="cart-section" style="margin-top: 70px; padding-top: 20px; border-top: 1px solid var(--card-border);">
+      <span class="badge-tag">// CHECKOUT CENTER</span>
+      <h2 class="section-title">ATUR KERANJANG KAMU</h2>
+      <p class="section-desc">Cek kembali item pilihanmu sebelum menyelesaikan pembayaran.</p>
 
-      <div class="crate-card">
-        <div class="crate-info">
-          <div class="crate-icon">💎</div>
-          <div>
-            <h4>AMETHYST CRATE</h4>
-            <p>1 key per purchase</p>
-          </div>
-        </div>
-        <div class="crate-action">
-          <div class="crate-price">Rp 15.000</div>
-          <button class="btn-primary btn-sm" onclick="addToCart('Amethyst Crate Key', 15000, '1 Key')">BELI &gt;</button>
-        </div>
-      </div>
-
-      <div class="crate-card">
-        <div class="crate-info">
-          <div class="crate-icon">🔥</div>
-          <div>
-            <h4>CRIMSON CRATE</h4>
-            <p>1 key per purchase</p>
-          </div>
-        </div>
-        <div class="crate-action">
-          <div class="crate-price">Rp 7.000</div>
-          <button class="btn-primary btn-sm" onclick="addToCart('Crimson Crate Key', 7000, '1 Key')">BELI &gt;</button>
-        </div>
-      </div>
-
-      <div class="crate-card">
-        <div class="crate-info">
-          <div class="crate-icon">⚡</div>
-          <div>
-            <h4>COBALT CRATE</h4>
-            <p>1 key per purchase</p>
-          </div>
-        </div>
-        <div class="crate-action">
-          <div class="crate-price">Rp 5.000</div>
-          <button class="btn-primary btn-sm" onclick="addToCart('Cobalt Crate Key', 5000, '1 Key')">BELI &gt;</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- SECTION CHECKOUT / RINGKASAN BELANJA -->
-    <div style="margin-top: 60px;">
-      <span class="badge-tag">// CHECKOUT</span>
-      <h2 class="section-title">KERANJANG BELANJA</h2>
-      
-      <div class="cart-card" style="margin-top: 20px;">
-        <h3 style="margin-bottom: 10px; font-size: 1.1rem;">👤 Data Penerima Item</h3>
-        <p id="player-summary-info" style="color: var(--text-muted); font-size: 0.95rem;">
-          Loading...
-        </p>
-      </div>
-
-      <div class="cart-card">
-        <h3 style="margin-bottom: 15px; font-size: 1.1rem;">🛒 Item Dalam Keranjang</h3>
+      <div class="cart-card" style="margin-top: 25px;">
         <div id="cart-items-list"></div>
 
         <div class="checkout-summary">
           <div class="summary-row">
-            <span>Total Item</span>
+            <span>Total Jumlah Item</span>
             <span id="summary-qty">0 Item</span>
           </div>
           <div class="summary-row total">
-            <span>Total Bayar</span>
+            <span>Total Pembayaran</span>
             <span id="summary-total" class="gradient-text">Rp 0</span>
           </div>
         </div>
 
         <button id="btn-checkout" class="btn-primary" style="width: 100%; margin-top: 20px; font-size: 1.05rem;" onclick="processCheckout()">
-          Lanjut Ke Pembayaran &rarr;
+          BAYAR SEKARANG &rarr;
         </button>
       </div>
     </div>
 
   </div>
 
-  <div id="toast-notification" class="toast-hidden">Item ditambahkan!</div>
+  <div id="toast-notification" class="toast-hidden">Pesan Notifikasi</div>
 
   <script>
     let cart = JSON.parse(localStorage.getItem('indox_cart')) || [];
@@ -147,22 +254,27 @@
             <span>${playerData.ign}</span>
           </div>
         `;
+        document.getElementById('cart-player-ign').innerText = playerData.ign;
+        document.getElementById('cart-player-edition').innerText = `(${playerData.edition || 'Java'})`;
+        document.getElementById('cart-player-avatar').src = `https://mc-heads.net/avatar/${playerData.ign}/32`;
+      } else {
+        document.getElementById('cart-player-ign').innerText = "Belum Diisi";
+        document.getElementById('cart-player-edition').innerText = "";
       }
     }
 
     function renderCart() {
-      const playerInfoEl = document.getElementById('player-summary-info');
-      if (playerData && playerData.ign) {
-        playerInfoEl.innerHTML = `Username (IGN): <strong>${playerData.ign}</strong> | Edisi: <strong>${playerData.edition || 'Java'} Edition</strong>`;
-      } else {
-        playerInfoEl.innerHTML = `⚠️ <span style="color: #ff2a4b;">Kamu belum memasukkan Username Minecraft!</span> <a href="index.html" style="color:#fff;">Isi data di Halaman Ranks</a>.`;
-      }
-
       const listEl = document.getElementById('cart-items-list');
+      const countEl = document.getElementById('cart-count');
+      
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      if (countEl) countEl.innerText = totalCount;
+
       if (cart.length === 0) {
         listEl.innerHTML = `
-          <div style="text-align: center; padding: 30px 0; color: var(--text-muted);">
-            <p>Keranjang belanja kamu masih kosong.</p>
+          <div style="text-align: center; padding: 40px 0; color: var(--text-muted);">
+            <p style="font-size: 1.1rem; margin-bottom: 5px;">Keranjang kamu masih kosong 🛒</p>
+            <p style="font-size: 0.85rem;">Silakan pilih Rank atau Crate Key di atas untuk ditambahkan.</p>
           </div>
         `;
         document.getElementById('summary-qty').innerText = '0 Item';
@@ -176,38 +288,36 @@
       document.getElementById('btn-checkout').style.opacity = '1';
 
       let html = '';
-      let totalQty = 0;
       let totalPrice = 0;
 
       cart.forEach((item, index) => {
         const itemTotal = item.price * item.qty;
-        totalQty += item.qty;
         totalPrice += itemTotal;
 
         html += `
           <div class="cart-item">
             <div>
-              <h4 style="color:#fff;">${item.name}</h4>
-              <p style="font-size:0.85rem; color:var(--text-muted);">${item.sub || ''}</p>
+              <h4 style="color:#fff; font-size:1.05rem;">${item.name}</h4>
+              <p style="font-size:0.8rem; color:var(--text-muted);">${item.sub || ''}</p>
             </div>
             <div style="display:flex; align-items:center; gap:15px;">
               <button class="qty-btn" onclick="updateQty(${index}, -1)">-</button>
-              <span>${item.qty}</span>
+              <span style="font-weight:700;">${item.qty}</span>
               <button class="qty-btn" onclick="updateQty(${index}, 1)">+</button>
-              <div class="gradient-text" style="font-weight:700; min-width:90px; text-align:right;">Rp ${itemTotal.toLocaleString('id-ID')}</div>
+              <div class="gradient-text" style="font-weight:800; min-width:100px; text-align:right;">Rp ${itemTotal.toLocaleString('id-ID')}</div>
             </div>
           </div>
         `;
       });
 
       listEl.innerHTML = html;
-      document.getElementById('summary-qty').innerText = `${totalQty} Item`;
+      document.getElementById('summary-qty').innerText = `${totalCount} Item`;
       document.getElementById('summary-total').innerText = `Rp ${totalPrice.toLocaleString('id-ID')}`;
     }
 
     function addToCart(name, price, sub) {
       if (!playerData || !playerData.ign) {
-        alert('Silakan masukkan Username Minecraft (IGN) kamu terlebih dahulu di halaman utama!');
+        alert('Harap masukkan Username Minecraft (IGN) kamu terlebih dahulu!');
         window.location.href = 'index.html';
         return;
       }
@@ -221,7 +331,7 @@
 
       localStorage.setItem('indox_cart', JSON.stringify(cart));
       renderCart();
-      showToast(`${name} ditambahkan!`);
+      showToast(`${name} berhasil ditambahkan!`);
     }
 
     function updateQty(index, change) {
@@ -237,18 +347,16 @@
       const toast = document.getElementById('toast-notification');
       toast.innerText = msg;
       toast.className = 'toast-visible';
-      setTimeout(() => {
-        toast.className = 'toast-hidden';
-      }, 2500);
+      setTimeout(() => { toast.className = 'toast-hidden'; }, 2500);
     }
 
     function processCheckout() {
       if (!playerData || !playerData.ign) {
-        alert('Harap masukkan Username Minecraft (IGN) kamu terlebih dahulu!');
+        alert('Harap masukkan Username Minecraft (IGN) kamu di beranda!');
         window.location.href = 'index.html';
         return;
       }
-      alert(`Terima kasih ${playerData.ign}! Pesanan kamu sedang diproses.`);
+      alert(`Terima kasih ${playerData.ign}! Pesanan kamu berhasil dibuat.`);
     }
   </script>
 </body>
