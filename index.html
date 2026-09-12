@@ -19,42 +19,48 @@
       </a>
     </div>
     <div class="nav-links">
+      <!-- PILIHAN BAHASA -->
+      <select id="lang-switcher" class="lang-select" onchange="switchLanguage(this.value)">
+        <option value="id">🇮🇩 ID</option>
+        <option value="en">🇬🇧 EN</option>
+      </select>
+
       <div id="user-header-area">
-        <button class="btn-primary" onclick="openLoginModal()" style="padding: 8px 16px; font-size: 0.85rem;">MASUKKAN IGN</button>
+        <button class="btn-primary" onclick="openLoginModal()" style="padding: 8px 16px; font-size: 0.85rem;" data-i18n="btn_enter_ign">MASUKKAN IGN</button>
       </div>
       <a href="article.html#cart-section" class="cart-btn">
-        🛒 KERANJANG <span class="cart-badge" id="cart-count">0</span>
+        🛒 <span data-i18n="nav_cart">KERANJANG</span> <span class="cart-badge" id="cart-count">0</span>
       </a>
     </div>
   </nav>
 
-  <!-- HERO SECTION WITH PLAYER PROFILE -->
+  <!-- HERO SECTION LANDING -->
   <header class="hero hero-landing">
     <div class="hero-center-content">
-      <div class="badge-pill">// OFFICIAL INDOXSMP STORE</div>
-      <h1 class="hero-title">Upgrade Your <br><span class="gradient-text">Minecraft Experience.</span></h1>
-      <p class="hero-sub">Selamat datang di official store IndoxSMP. Masukkan IGN kamu dan pilih kategori produk yang ingin kamu beli.</p>
+      <div class="badge-pill" data-i18n="hero_badge">// OFFICIAL INDOXSMP STORE</div>
+      <h1 class="hero-title"><span data-i18n="hero_title_1">Upgrade Your</span> <br><span class="gradient-text" data-i18n="hero_title_2">Minecraft Experience.</span></h1>
+      <p class="hero-sub" data-i18n="hero_desc">Selamat datang di official store IndoxSMP. Masukkan IGN kamu dan pilih kategori produk yang ingin kamu beli.</p>
       
       <!-- CARD PLAYER PROFILE -->
       <div class="player-profile-card landing-profile" id="hero-player-card">
         <img id="player-avatar-head" src="https://mc-heads.net/avatar/steve/64" alt="Minecraft Skin" class="player-avatar-img" />
         <div style="text-align: left;">
-          <div class="player-label">AKUN DIPILIH:</div>
+          <div class="player-label" data-i18n="profile_selected">AKUN DIPILIH:</div>
           <div id="player-ign-display" class="player-ign-title">Guest Player</div>
           <div id="player-edition-display" class="player-edition-sub">Java Edition</div>
         </div>
-        <button onclick="openLoginModal()" class="btn-ganti-account">Ganti Akun</button>
+        <button onclick="openLoginModal()" class="btn-ganti-account" data-i18n="btn_change">Ganti Akun</button>
       </div>
 
-      <!-- IP SERVER & AKSI STORE -->
+      <!-- KATEGORI STORE -->
       <div class="landing-actions">
-        <h3 style="margin-bottom: 15px; font-weight: 800; font-size: 1.2rem;">PILIH KATEGORI STORE:</h3>
+        <h3 style="margin-bottom: 15px; font-weight: 800; font-size: 1.2rem;" data-i18n="cat_heading">PILIH KATEGORI STORE:</h3>
         <div class="category-buttons-grid">
           <a href="article.html#ranks-section" class="btn-category-card">
             <div class="cat-icon">👑</div>
             <div>
               <div class="cat-title">RANKS STORE &rarr;</div>
-              <div class="cat-desc">Beli rank Indox+, Cosmix, Custom, & VIP</div>
+              <div class="cat-desc" data-i18n="cat_ranks_desc">Beli rank Indox+, Cosmix, Custom, & VIP</div>
             </div>
           </a>
 
@@ -62,7 +68,7 @@
             <div class="cat-icon">📦</div>
             <div>
               <div class="cat-title">CRATES & KEYS &rarr;</div>
-              <div class="cat-desc">Beli Spawners, Amethyst, Crimson, & Cobalt Keys</div>
+              <div class="cat-desc" data-i18n="cat_crates_desc">Beli Spawners, Amethyst, Crimson, & Cobalt Keys</div>
             </div>
           </a>
         </div>
@@ -70,10 +76,10 @@
 
       <div class="ip-card" style="margin-top: 30px; max-width: 500px; width: 100%;">
         <div style="text-align: left;">
-          <span class="ip-label">ALAMAT SERVER</span>
+          <span class="ip-label" data-i18n="ip_label">ALAMAT SERVER</span>
           <span class="ip-value">indoxsmp.net</span>
         </div>
-        <button class="btn-copy" onclick="copyIP()">Salin IP</button>
+        <button class="btn-copy" onclick="copyIP()" data-i18n="btn_copy">Salin IP</button>
       </div>
 
     </div>
@@ -83,19 +89,19 @@
   <div class="modal-overlay" id="login-modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h3>MASUKKAN IDENTITAS PLAYER</h3>
+        <h3 data-i18n="modal_title">MASUKKAN IDENTITAS PLAYER</h3>
         <button class="close-btn" onclick="closeLoginModal()">&times;</button>
       </div>
-      <p>Masukkan username player Minecraft kamu agar item otomatis dikirimkan ke in-game setelah checkout.</p>
+      <p data-i18n="modal_desc">Masukkan username player Minecraft kamu agar item otomatis dikirimkan ke in-game setelah checkout.</p>
       
       <form id="player-form" onsubmit="savePlayer(event)">
         <div class="form-group">
-          <label>USERNAME MINECRAFT (IGN):</label>
+          <label data-i18n="modal_ign_label">USERNAME MINECRAFT (IGN):</label>
           <input type="text" id="input-ign" placeholder="Contoh: Westernish" required />
         </div>
 
         <div class="form-group">
-          <label>EDISI MINECRAFT:</label>
+          <label data-i18n="modal_edition_label">EDISI MINECRAFT:</label>
           <div class="edition-selector">
             <label class="edition-option">
               <input type="radio" name="edition" value="Java" checked />
@@ -108,18 +114,23 @@
           </div>
         </div>
 
-        <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; margin-top: 10px;">Simpan & Lanjut ke Store &rarr;</button>
+        <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; margin-top: 10px;" data-i18n="modal_submit">Simpan & Lanjut ke Store &rarr;</button>
       </form>
     </div>
   </div>
 
   <div id="toast-notification" class="toast-hidden">Pesan Notifikasi</div>
 
+  <!-- SCRIPT BAHASA & USER -->
+  <script src="translations.js"></script>
   <script>
     let cart = JSON.parse(localStorage.getItem('indox_cart')) || [];
     let playerData = JSON.parse(localStorage.getItem('indox_player')) || null;
+    let currentLang = localStorage.getItem('indox_lang') || 'id';
 
     document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('lang-switcher').value = currentLang;
+      applyTranslations(currentLang);
       updateCartCount();
       updatePlayerUI();
       if (!playerData) {
@@ -127,24 +138,23 @@
       }
     });
 
-    function openLoginModal() {
-      document.getElementById('login-modal').style.display = 'flex';
+    function switchLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('indox_lang', lang);
+      applyTranslations(lang);
     }
 
-    function closeLoginModal() {
-      document.getElementById('login-modal').style.display = 'none';
-    }
+    function openLoginModal() { document.getElementById('login-modal').style.display = 'flex'; }
+    function closeLoginModal() { document.getElementById('login-modal').style.display = 'none'; }
 
     function savePlayer(e) {
       e.preventDefault();
       const ign = document.getElementById('input-ign').value.trim();
       const edition = document.querySelector('input[name="edition"]:checked').value;
-
       if (!ign) return;
 
       playerData = { ign, edition };
       localStorage.setItem('indox_player', JSON.stringify(playerData));
-
       updatePlayerUI();
       closeLoginModal();
     }
@@ -157,7 +167,6 @@
             <span>${playerData.ign}</span>
           </div>
         `;
-
         document.getElementById('player-ign-display').innerText = playerData.ign;
         document.getElementById('player-edition-display').innerText = playerData.edition + ' Edition';
         document.getElementById('player-avatar-head').src = `https://mc-heads.net/avatar/${playerData.ign}/64`;
@@ -178,7 +187,7 @@
 
     function copyIP() {
       navigator.clipboard.writeText('indoxsmp.net');
-      showToast('IP indoxsmp.net berhasil disalin!');
+      showToast(currentLang === 'id' ? 'IP indoxsmp.net berhasil disalin!' : 'IP indoxsmp.net copied!');
     }
   </script>
 </body>
