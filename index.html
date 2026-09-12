@@ -3,147 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INDOX SMP Store — Official Store</title>
+  <title>INDOX SMP Store — Ranks</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Styling Tambahan Khusus Tampilan Baru */
-    :root {
-      --cyan-primary: #00d2ff;
-      --cyan-glow: rgba(0, 210, 255, 0.4);
-      --dark-card: #080d14;
-      --dark-border: rgba(0, 210, 255, 0.15);
-    }
-
-    body {
-      background-color: #04070c;
-      color: #e2e8f0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    .cyan-text { color: var(--cyan-primary); }
-    .btn-cyan {
-      background: var(--cyan-primary);
-      color: #000;
-      font-weight: 700;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn-cyan:hover {
-      box-shadow: 0 0 15px var(--cyan-glow);
-      transform: translateY(-2px);
-    }
-
-    /* Player Status Card di Hero */
-    .player-profile-card {
-      background: rgba(12, 20, 32, 0.8);
-      border: 1px solid var(--dark-border);
-      border-radius: 16px;
-      padding: 24px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-top: 25px;
-      backdrop-filter: blur(10px);
-    }
-
-    .player-avatar-img {
-      width: 64px;
-      height: 64px;
-      border-radius: 8px;
-      image-rendering: pixelated;
-      background: #000;
-      border: 2px solid var(--cyan-primary);
-    }
-
-    /* Price Badge Tag */
-    .price-discount {
-      background: rgba(0, 210, 255, 0.2);
-      color: var(--cyan-primary);
-      font-size: 0.75rem;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 700;
-      margin-left: 6px;
-    }
-
-    .strike-price {
-      text-decoration: line-through;
-      color: #64748b;
-      font-size: 0.85rem;
-      margin-right: 5px;
-    }
-
-    /* Grid Crate Keys */
-    .crates-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .crate-card {
-      background: rgba(12, 20, 32, 0.6);
-      border: 1px solid var(--dark-border);
-      border-radius: 12px;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .crate-icon {
-      font-size: 2rem;
-      padding: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-  </style>
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="nav-brand" style="display: flex; align-items: center; gap: 10px;">
-      <span style="font-weight: 800; letter-spacing: 1px;">INDOX SMP</span>
-      <span style="font-size: 0.7rem; color: #64748b; letter-spacing: 2px;">OFFICIAL STORE</span>
+    <div class="nav-brand">
+      <a href="index.html" class="brand-logo" style="text-decoration: none; color: inherit;">
+        INDOX<span class="gradient-text">SMP</span>
+      </a>
     </div>
     <div class="nav-links">
-      <a href="#ranks">RANKS</a>
-      <a href="#crates">CRATES</a>
+      <a href="index.html" class="active-link">RANKS</a>
+      <a href="article.html">CRATES & KEYS</a>
       <div id="user-header-area">
-        <button class="btn-cyan" onclick="openLoginModal()">MASUKKAN IGN</button>
+        <button class="btn-primary" onclick="openLoginModal()" style="padding: 8px 16px; font-size: 0.85rem;">MASUKKAN IGN</button>
       </div>
       <a href="article.html" class="cart-btn">
-        🛒 BELI <span class="cart-badge" id="cart-count">0</span>
+        🛒 KERANJANG <span class="cart-badge" id="cart-count">0</span>
       </a>
     </div>
   </nav>
 
-  <!-- HERO SECTION WITH LOGIN AVATAR -->
+  <!-- HERO SECTION WITH PLAYER PROFILE -->
   <header class="hero">
     <div class="hero-left">
-      <div class="badge-pill">// INDOX SMP STORE</div>
-      <h1 class="hero-title">Upgrade Your <br><span class="cyan-text">Adventure.</span></h1>
-      <p class="hero-sub">Rank eksklusif, crate langka, dan benefit terbaik untuk pengalaman bermain di IndoxSMP.</p>
+      <div class="badge-pill">// OFFICIAL INDOXSMP STORE</div>
+      <h1 class="hero-title">Upgrade Your <br><span class="gradient-text">Adventure.</span></h1>
+      <p class="hero-sub">Rank eksklusif dan benefit terbaik untuk pengalaman bermain di IndoxSMP.</p>
       
-      <!-- CARD TAMPILAN PLAYER PROFILE JIKA SUDAH LOGIN -->
+      <!-- CARD TAMPILAN PROFILE PLAYER -->
       <div class="player-profile-card" id="hero-player-card">
         <img id="player-avatar-head" src="https://mc-heads.net/avatar/steve/64" alt="Minecraft Skin" class="player-avatar-img" />
         <div>
-          <div style="font-size: 0.8rem; color: #64748b; font-weight: 700;">LOGGED IN PLAYER:</div>
-          <div id="player-ign-display" style="font-size: 1.3rem; font-weight: 800; color: #fff;">Guest Player</div>
-          <div id="player-edition-display" style="font-size: 0.8rem; color: var(--cyan-primary);">Java Edition</div>
+          <div class="player-label">LOGGED IN PLAYER:</div>
+          <div id="player-ign-display" class="player-ign-title">Guest Player</div>
+          <div id="player-edition-display" class="player-edition-sub">Java Edition</div>
         </div>
-        <button onclick="openLoginModal()" style="margin-left: auto; background: none; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">Ganti</button>
+        <button onclick="openLoginModal()" class="btn-ganti-account">Ganti Akun</button>
       </div>
     </div>
 
@@ -160,19 +62,20 @@
 
   <!-- RANKS SECTION -->
   <section class="section-container" id="ranks">
-    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 15px;">
       <div>
-        <h2 class="section-title" style="font-size: 2.5rem; font-weight: 800; letter-spacing: -1px;">CHOOSE YOUR RANK</h2>
+        <span class="badge-tag">// MEMBERSHIP</span>
+        <h2 class="section-title">CHOOSE YOUR RANK</h2>
       </div>
-      <p class="section-desc" style="max-width: 350px; text-align: right;">Semakin tinggi rank, semakin banyak akses dan benefit yang kamu dapatkan di dalam server.</p>
+      <p class="section-desc" style="max-width: 350px;">Semakin tinggi rank, semakin banyak akses dan benefit yang kamu dapatkan di dalam server.</p>
     </div>
 
-    <div class="ranks-grid" style="margin-top: 30px;">
+    <div class="ranks-grid">
       
       <!-- CARD 1: INDOX+ -->
       <div class="rank-card">
         <div class="rank-header">
-          <span style="color: #64748b; font-size: 0.8rem;">01</span>
+          <span class="rank-number">01</span>
           <span class="rank-type-pill">PERMANENT RANK</span>
         </div>
         <h3 class="rank-name">INDOX+</h3>
@@ -189,13 +92,13 @@
           <li>✓ Daily crate key</li>
           <li>✓ 1M starter balance</li>
         </ul>
-        <button class="btn-cyan" style="width: 100%;" onclick="addToCart('INDOX+ Rank', 34920, 'Starter Rank')">BELI INDOX+ &gt;</button>
+        <button class="btn-primary" style="width: 100%;" onclick="addToCart('INDOX+ Rank', 34920, 'Starter Rank')">BELI INDOX+ &gt;</button>
       </div>
 
       <!-- CARD 2: COSMIX -->
       <div class="rank-card">
         <div class="rank-header">
-          <span style="color: #64748b; font-size: 0.8rem;">02</span>
+          <span class="rank-number">02</span>
           <span class="rank-type-pill">PERMANENT RANK</span>
         </div>
         <h3 class="rank-name">COSMIX</h3>
@@ -214,14 +117,14 @@
           <li>✓ 3M starter balance</li>
           <li>✓ Shards while playing</li>
         </ul>
-        <button class="btn-cyan" style="width: 100%;" onclick="addToCart('COSMIX Rank', 71280, 'Step up Rank')">BELI COSMIX &gt;</button>
+        <button class="btn-primary" style="width: 100%;" onclick="addToCart('COSMIX Rank', 71280, 'Step Up Rank')">BELI COSMIX &gt;</button>
       </div>
 
       <!-- CARD 3: CUSTOM (POPULAR) -->
-      <div class="rank-card" style="border-color: var(--cyan-primary);">
+      <div class="rank-card featured-card">
         <div class="rank-header">
-          <span style="color: #64748b; font-size: 0.8rem;">03</span>
-          <span style="background: var(--cyan-primary); color: #000; padding: 2px 8px; border-radius: 4px; font-weight: 800; font-size: 0.7rem;">POPULAR</span>
+          <span class="rank-number">03</span>
+          <span class="popular-badge">POPULAR</span>
         </div>
         <h3 class="rank-name">CUSTOM</h3>
         <p class="rank-desc">Most popular</p>
@@ -239,14 +142,14 @@
           <li>✓ No RTP cooldown</li>
           <li>✓ /ecraft & /echest</li>
         </ul>
-        <button class="btn-cyan" style="width: 100%;" onclick="addToCart('CUSTOM Rank', 143280, 'Most Popular Rank')">BELI CUSTOM &gt;</button>
+        <button class="btn-primary" style="width: 100%;" onclick="addToCart('CUSTOM Rank', 143280, 'Most Popular Rank')">BELI CUSTOM &gt;</button>
       </div>
 
       <!-- CARD 4: VIP (ULTIMATE) -->
       <div class="rank-card">
         <div class="rank-header">
-          <span style="color: #64748b; font-size: 0.8rem;">04</span>
-          <span style="border: 1px solid var(--cyan-primary); color: var(--cyan-primary); padding: 2px 8px; border-radius: 4px; font-weight: 800; font-size: 0.7rem;">ULTIMATE</span>
+          <span class="rank-number">04</span>
+          <span class="ultimate-badge">ULTIMATE</span>
         </div>
         <h3 class="rank-name">VIP</h3>
         <p class="rank-desc">The ultimate experience</p>
@@ -264,80 +167,7 @@
           <li>✓ /ecraft, /eanvil, /sfly, /echest</li>
           <li>✓ Shards while playing</li>
         </ul>
-        <button class="btn-cyan" style="width: 100%;" onclick="addToCart('VIP Rank', 311040, 'Ultimate Rank')">BELI VIP &gt;</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CRATE KEYS SECTION -->
-  <section class="section-container" id="crates">
-    <div style="margin-bottom: 20px;">
-      <span class="badge-tag">// RARE DROPS</span>
-      <h2 class="section-title" style="font-size: 2.2rem; font-weight: 800;">CRATE KEYS</h2>
-      <p class="section-desc">Buka crate dan dapatkan item langka untuk membantu petualanganmu.</p>
-    </div>
-
-    <div class="crates-grid">
-      
-      <!-- CRATE 1 -->
-      <div class="crate-card">
-        <div style="display: flex; align-items: center; gap: 15px;">
-          <div class="crate-icon" style="color: #27c93f;">📦</div>
-          <div>
-            <h4 style="font-weight: 800; color: #fff;">SPAWNERS CRATE</h4>
-            <p style="font-size: 0.8rem; color: #64748b;">1 key per purchase</p>
-          </div>
-        </div>
-        <div style="text-align: right;">
-          <div style="font-weight: 800; color: var(--cyan-primary);">Rp 8.000</div>
-          <button class="btn-cyan" style="padding: 4px 12px; font-size: 0.8rem; margin-top: 5px;" onclick="addToCart('Spawners Crate Key', 8000, '1 Key')">BELI &gt;</button>
-        </div>
-      </div>
-
-      <!-- CRATE 2 -->
-      <div class="crate-card">
-        <div style="display: flex; align-items: center; gap: 15px;">
-          <div class="crate-icon" style="color: #a855f7;">💎</div>
-          <div>
-            <h4 style="font-weight: 800; color: #fff;">AMETHYST CRATE</h4>
-            <p style="font-size: 0.8rem; color: #64748b;">1 key per purchase</p>
-          </div>
-        </div>
-        <div style="text-align: right;">
-          <div style="font-weight: 800; color: var(--cyan-primary);">Rp 15.000</div>
-          <button class="btn-cyan" style="padding: 4px 12px; font-size: 0.8rem; margin-top: 5px;" onclick="addToCart('Amethyst Crate Key', 15000, '1 Key')">BELI &gt;</button>
-        </div>
-      </div>
-
-      <!-- CRATE 3 -->
-      <div class="crate-card">
-        <div style="display: flex; align-items: center; gap: 15px;">
-          <div class="crate-icon" style="color: #ff4d6d;">🔥</div>
-          <div>
-            <h4 style="font-weight: 800; color: #fff;">CRIMSON CRATE</h4>
-            <p style="font-size: 0.8rem; color: #64748b;">1 key per purchase</p>
-          </div>
-        </div>
-        <div style="text-align: right;">
-          <div style="font-weight: 800; color: var(--cyan-primary);">Rp 7.000</div>
-          <button class="btn-cyan" style="padding: 4px 12px; font-size: 0.8rem; margin-top: 5px;" onclick="addToCart('Crimson Crate Key', 7000, '1 Key')">BELI &gt;</button>
-        </div>
-      </div>
-
-      <!-- CRATE 4 -->
-      <div class="crate-card">
-        <div style="display: flex; align-items: center; gap: 15px;">
-          <div class="crate-icon" style="color: #3b82f6;">⚡</div>
-          <div>
-            <h4 style="font-weight: 800; color: #fff;">COBALT CRATE</h4>
-            <p style="font-size: 0.8rem; color: #64748b;">1 key per purchase</p>
-          </div>
-        </div>
-        <div style="text-align: right;">
-          <div style="font-weight: 800; color: var(--cyan-primary);">Rp 5.000</div>
-          <button class="btn-cyan" style="padding: 4px 12px; font-size: 0.8rem; margin-top: 5px;" onclick="addToCart('Cobalt Crate Key', 5000, '1 Key')">BELI &gt;</button>
-        </div>
+        <button class="btn-primary" style="width: 100%;" onclick="addToCart('VIP Rank', 311040, 'Ultimate Rank')">BELI VIP &gt;</button>
       </div>
 
     </div>
@@ -350,7 +180,7 @@
         <h3>MASUKKAN IDENTITAS PLAYER</h3>
         <button class="close-btn" onclick="closeLoginModal()">&times;</button>
       </div>
-      <p>Pilih bahasa dan masukkan username player agar item otomatis masuk ke akun kamu setelah pembayaran.</p>
+      <p>Masukkan username player Minecraft kamu agar item otomatis dikirimkan setelah pembayaran.</p>
       
       <form id="player-form" onsubmit="savePlayer(event)">
         <div class="form-group">
@@ -372,13 +202,12 @@
           </div>
         </div>
 
-        <button type="submit" class="btn-cyan" style="width: 100%; padding: 12px; margin-top: 10px;">Simpan & Masuk Ke Store &rarr;</button>
+        <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; margin-top: 10px;">Simpan & Masuk Store &rarr;</button>
       </form>
     </div>
   </div>
 
-  <!-- TOAST NOTIFIKASI -->
-  <div id="toast-notification" class="toast-hidden">Item ditambahkan ke keranjang!</div>
+  <div id="toast-notification" class="toast-hidden">Item ditambahkan!</div>
 
   <script>
     let cart = JSON.parse(localStorage.getItem('indox_cart')) || [];
@@ -416,15 +245,13 @@
 
     function updatePlayerUI() {
       if (playerData && playerData.ign) {
-        // Update di Nav Header
         document.getElementById('user-header-area').innerHTML = `
-          <div onclick="openLoginModal()" style="cursor: pointer; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 20px; border: 1px solid var(--dark-border);">
+          <div onclick="openLoginModal()" class="nav-user-badge">
             <img src="https://mc-heads.net/avatar/${playerData.ign}/24" style="width:20px; height:20px; border-radius:4px;" />
-            <span style="font-weight: 700; color: #fff; font-size: 0.9rem;">${playerData.ign}</span>
+            <span>${playerData.ign}</span>
           </div>
         `;
 
-        // Update di Hero Section dengan Skin Real-time dari API
         document.getElementById('player-ign-display').innerText = playerData.ign;
         document.getElementById('player-edition-display').innerText = playerData.edition + ' Edition';
         document.getElementById('player-avatar-head').src = `https://mc-heads.net/avatar/${playerData.ign}/64`;
@@ -446,7 +273,7 @@
 
       localStorage.setItem('indox_cart', JSON.stringify(cart));
       updateCartCount();
-      showToast(`${name} berhasil ditambahkan!`);
+      showToast(`${name} ditambahkan ke keranjang!`);
     }
 
     function updateCartCount() {
@@ -465,7 +292,7 @@
 
     function copyIP() {
       navigator.clipboard.writeText('indoxsmp.net');
-      showToast('IP indoxsmp.net disalin!');
+      showToast('IP indoxsmp.net berhasil disalin!');
     }
   </script>
 </body>
