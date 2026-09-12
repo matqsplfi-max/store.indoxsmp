@@ -3,646 +3,470 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IndoxSMP Store — Official Gaming Store</title>
+  <title>INDOX SMP Store — Official Store</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* Styling Tambahan Khusus Tampilan Baru */
     :root {
-      --primary-red: #ff2a4b;
-      --primary-red-hover: #e01b3c;
-      --accent-red-glow: rgba(255, 42, 75, 0.4);
-      --dark-bg: #0d0608;
-      --card-bg: rgba(26, 12, 16, 0.7);
-      --card-border: rgba(255, 42, 75, 0.2);
+      --cyan-primary: #00d2ff;
+      --cyan-glow: rgba(0, 210, 255, 0.4);
+      --dark-card: #080d14;
+      --dark-border: rgba(0, 210, 255, 0.15);
     }
 
-    /* Highlight Khusus Card Populer */
-    .featured-highlight {
-      border: 2px solid var(--primary-red) !important;
-      box-shadow: 0 0 25px var(--accent-red-glow), inset 0 0 15px rgba(255, 42, 75, 0.15) !important;
-      position: relative;
-      transform: scale(1.02);
-      transition: all 0.3s ease;
+    body {
+      background-color: #04070c;
+      color: #e2e8f0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    .featured-highlight:hover {
-      box-shadow: 0 0 35px rgba(255, 42, 75, 0.7), inset 0 0 20px rgba(255, 42, 75, 0.25) !important;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #ff4d6d 0%, #ff2a4b 50%, #b30021 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-    }
-
-    .badge-tag, .badge-pill {
-      background: transparent !important;
-      color: #ff4d6d !important;
-      border: none !important;
-      box-shadow: none !important;
-      padding: 0 !important;
+    .cyan-text { color: var(--cyan-primary); }
+    .btn-cyan {
+      background: var(--cyan-primary);
+      color: #000;
       font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    .btn-primary, .btn-primary-card {
-      background: linear-gradient(135deg, #ff2a4b 0%, #b30021 100%) !important;
-      color: #ffffff !important;
-      box-shadow: 0 4px 20px var(--accent-red-glow) !important;
-      border: none !important;
-    }
-
-    .btn-primary:hover, .btn-primary-card:hover {
-      background: linear-gradient(135deg, #ff4d6d 0%, #d90429 100%) !important;
-      box-shadow: 0 6px 25px rgba(255, 42, 75, 0.6) !important;
-    }
-
-    .featured-ribbon {
-      background: #ff2a4b !important;
-      color: #ffffff !important;
-    }
-
-    .edition-option input[type="radio"]:checked + .edition-box {
-      border-color: var(--primary-red) !important;
-      background: rgba(255, 42, 75, 0.15) !important;
-      color: #ffffff !important;
-      box-shadow: 0 0 10px var(--accent-red-glow) !important;
-    }
-
-    .status-indicator {
-      background-color: #ff2a4b !important;
-      box-shadow: 0 0 8px #ff2a4b !important;
-    }
-
-    .cart-badge {
-      background-color: #ff2a4b !important;
-      color: #ffffff !important;
-    }
-
-    .toast-visible {
-      border-left: 4px solid #ff2a4b !important;
-      box-shadow: 0 10px 30px rgba(255, 42, 75, 0.3) !important;
-    }
-
-    /* Selection Cards Style */
-    .store-selection-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .selection-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 30px;
-      text-align: center;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .selection-card:hover {
-      border-color: var(--primary-red);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px var(--accent-red-glow);
-    }
-
-    .selection-icon {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
-
-    .category-back-btn {
-      display: inline-block;
-      margin-bottom: 20px;
-      color: #ff4d6d;
+      transition: all 0.3s;
       text-decoration: none;
-      font-weight: 600;
-      cursor: pointer;
+      display: inline-block;
+    }
+    .btn-cyan:hover {
+      box-shadow: 0 0 15px var(--cyan-glow);
+      transform: translateY(-2px);
     }
 
-    .category-back-btn:hover {
-      text-decoration: underline;
+    /* Player Status Card di Hero */
+    .player-profile-card {
+      background: rgba(12, 20, 32, 0.8);
+      border: 1px solid var(--dark-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 25px;
+      backdrop-filter: blur(10px);
     }
 
-    /* Welcome Banner Style */
-    .welcome-banner {
-      background: rgba(255, 42, 75, 0.1);
-      border-left: 3px solid var(--primary-red);
-      padding: 12px 18px;
-      border-radius: 8px;
-      margin: 15px 0 20px 0;
-      font-size: 0.95rem;
-      color: #ffffff;
-    }
-
-    .player-avatar-head {
+    .player-avatar-img {
       width: 64px;
       height: 64px;
+      border-radius: 8px;
+      image-rendering: pixelated;
+      background: #000;
+      border: 2px solid var(--cyan-primary);
+    }
+
+    /* Price Badge Tag */
+    .price-discount {
+      background: rgba(0, 210, 255, 0.2);
+      color: var(--cyan-primary);
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+
+    .strike-price {
+      text-decoration: line-through;
+      color: #64748b;
+      font-size: 0.85rem;
+      margin-right: 5px;
+    }
+
+    /* Grid Crate Keys */
+    .crates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .crate-card {
+      background: rgba(12, 20, 32, 0.6);
+      border: 1px solid var(--dark-border);
       border-radius: 12px;
-      border: 2px solid var(--primary-red);
-      box-shadow: 0 0 12px var(--accent-red-glow);
-      margin-bottom: 10px;
-      object-fit: cover;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .crate-icon {
+      font-size: 2rem;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
   </style>
 </head>
 <body>
 
-  <!-- MODAL GATEWAY / SETTINGS -->
-  <div id="gateway-modal" class="modal-overlay">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="badge-tag">ACCOUNT SETUP</div>
-        <button id="close-modal-btn" class="close-btn">&times;</button>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand" style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-weight: 800; letter-spacing: 1px;">INDOX SMP</span>
+      <span style="font-size: 0.7rem; color: #64748b; letter-spacing: 2px;">OFFICIAL STORE</span>
+    </div>
+    <div class="nav-links">
+      <a href="#ranks">RANKS</a>
+      <a href="#crates">CRATES</a>
+      <div id="user-header-area">
+        <button class="btn-cyan" onclick="openLoginModal()">MASUKKAN IGN</button>
       </div>
-      <h2 data-i18n="modal_title">MASUKKAN IDENTITAS PLAYER</h2>
-      <p data-i18n="modal_desc">Pilih bahasa dan masukkan data player agar item otomatis masuk ke dalam akun kamu setelah pembayaran.</p>
+      <a href="article.html" class="cart-btn">
+        🛒 BELI <span class="cart-badge" id="cart-count">0</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION WITH LOGIN AVATAR -->
+  <header class="hero">
+    <div class="hero-left">
+      <div class="badge-pill">// INDOX SMP STORE</div>
+      <h1 class="hero-title">Upgrade Your <br><span class="cyan-text">Adventure.</span></h1>
+      <p class="hero-sub">Rank eksklusif, crate langka, dan benefit terbaik untuk pengalaman bermain di IndoxSMP.</p>
       
-      <form id="gateway-form">
-        <div class="form-group">
-          <label data-i18n="lang_label">PILIH BAHASA / SELECT LANGUAGE:</label>
-          <div class="edition-selector">
-            <label class="edition-option">
-              <input type="radio" name="language" value="id" checked />
-              <span class="edition-box">🇮🇩 Bahasa Indonesia</span>
-            </label>
-            <label class="edition-option">
-              <input type="radio" name="language" value="en" />
-              <span class="edition-box">🇬🇧 English</span>
-            </label>
+      <!-- CARD TAMPILAN PLAYER PROFILE JIKA SUDAH LOGIN -->
+      <div class="player-profile-card" id="hero-player-card">
+        <img id="player-avatar-head" src="https://mc-heads.net/avatar/steve/64" alt="Minecraft Skin" class="player-avatar-img" />
+        <div>
+          <div style="font-size: 0.8rem; color: #64748b; font-weight: 700;">LOGGED IN PLAYER:</div>
+          <div id="player-ign-display" style="font-size: 1.3rem; font-weight: 800; color: #fff;">Guest Player</div>
+          <div id="player-edition-display" style="font-size: 0.8rem; color: var(--cyan-primary);">Java Edition</div>
+        </div>
+        <button onclick="openLoginModal()" style="margin-left: auto; background: none; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">Ganti</button>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="ip-card">
+        <div>
+          <span class="ip-label">ALAMAT SERVER</span>
+          <span class="ip-value">indoxsmp.net</span>
+        </div>
+        <button class="btn-copy" onclick="copyIP()">Salin IP</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- RANKS SECTION -->
+  <section class="section-container" id="ranks">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <h2 class="section-title" style="font-size: 2.5rem; font-weight: 800; letter-spacing: -1px;">CHOOSE YOUR RANK</h2>
+      </div>
+      <p class="section-desc" style="max-width: 350px; text-align: right;">Semakin tinggi rank, semakin banyak akses dan benefit yang kamu dapatkan di dalam server.</p>
+    </div>
+
+    <div class="ranks-grid" style="margin-top: 30px;">
+      
+      <!-- CARD 1: INDOX+ -->
+      <div class="rank-card">
+        <div class="rank-header">
+          <span style="color: #64748b; font-size: 0.8rem;">01</span>
+          <span class="rank-type-pill">PERMANENT RANK</span>
+        </div>
+        <h3 class="rank-name">INDOX+</h3>
+        <p class="rank-desc">Starter rank</p>
+        <div class="price-container">
+          <span class="strike-price">Rp 58.200</span>
+          <span class="rank-price">Rp 34.920</span>
+          <span class="price-discount">-40%</span>
+        </div>
+        <ul class="features">
+          <li>✓ 4 Homes</li>
+          <li>✓ Diamond Kit 1</li>
+          <li>✓ Fast AH buy</li>
+          <li>✓ Daily crate key</li>
+          <li>✓ 1M starter balance</li>
+        </ul>
+        <button class="btn-cyan" style="width: 100%;" onclick="addToCart('INDOX+ Rank', 34920, 'Starter Rank')">BELI INDOX+ &gt;</button>
+      </div>
+
+      <!-- CARD 2: COSMIX -->
+      <div class="rank-card">
+        <div class="rank-header">
+          <span style="color: #64748b; font-size: 0.8rem;">02</span>
+          <span class="rank-type-pill">PERMANENT RANK</span>
+        </div>
+        <h3 class="rank-name">COSMIX</h3>
+        <p class="rank-desc">Step up rank</p>
+        <div class="price-container">
+          <span class="strike-price">Rp 118.800</span>
+          <span class="rank-price">Rp 71.280</span>
+          <span class="price-discount">-40%</span>
+        </div>
+        <ul class="features">
+          <li>✓ 6 Homes</li>
+          <li>✓ More AH slots</li>
+          <li>✓ Diamond Kit 2</li>
+          <li>✓ /echest</li>
+          <li>✓ /sfly (spawn)</li>
+          <li>✓ 3M starter balance</li>
+          <li>✓ Shards while playing</li>
+        </ul>
+        <button class="btn-cyan" style="width: 100%;" onclick="addToCart('COSMIX Rank', 71280, 'Step up Rank')">BELI COSMIX &gt;</button>
+      </div>
+
+      <!-- CARD 3: CUSTOM (POPULAR) -->
+      <div class="rank-card" style="border-color: var(--cyan-primary);">
+        <div class="rank-header">
+          <span style="color: #64748b; font-size: 0.8rem;">03</span>
+          <span style="background: var(--cyan-primary); color: #000; padding: 2px 8px; border-radius: 4px; font-weight: 800; font-size: 0.7rem;">POPULAR</span>
+        </div>
+        <h3 class="rank-name">CUSTOM</h3>
+        <p class="rank-desc">Most popular</p>
+        <div class="price-container">
+          <span class="strike-price">Rp 238.800</span>
+          <span class="rank-price">Rp 143.280</span>
+          <span class="price-discount">-40%</span>
+        </div>
+        <ul class="features">
+          <li>✓ 8 Homes</li>
+          <li>✓ Netherite Kit</li>
+          <li>✓ /sfly (spawn)</li>
+          <li>✓ Shards while playing</li>
+          <li>✓ 5M starter balance</li>
+          <li>✓ No RTP cooldown</li>
+          <li>✓ /ecraft & /echest</li>
+        </ul>
+        <button class="btn-cyan" style="width: 100%;" onclick="addToCart('CUSTOM Rank', 143280, 'Most Popular Rank')">BELI CUSTOM &gt;</button>
+      </div>
+
+      <!-- CARD 4: VIP (ULTIMATE) -->
+      <div class="rank-card">
+        <div class="rank-header">
+          <span style="color: #64748b; font-size: 0.8rem;">04</span>
+          <span style="border: 1px solid var(--cyan-primary); color: var(--cyan-primary); padding: 2px 8px; border-radius: 4px; font-weight: 800; font-size: 0.7rem;">ULTIMATE</span>
+        </div>
+        <h3 class="rank-name">VIP</h3>
+        <p class="rank-desc">The ultimate experience</p>
+        <div class="price-container">
+          <span class="strike-price">Rp 518.400</span>
+          <span class="rank-price">Rp 311.040</span>
+          <span class="price-discount">-40%</span>
+        </div>
+        <ul class="features">
+          <li>✓ 10 Homes</li>
+          <li>✓ Access /kit custom, cosmix, indox</li>
+          <li>✓ Netherite Kit [2]</li>
+          <li>✓ 10M starter balance</li>
+          <li>✓ No RTP cooldown</li>
+          <li>✓ /ecraft, /eanvil, /sfly, /echest</li>
+          <li>✓ Shards while playing</li>
+        </ul>
+        <button class="btn-cyan" style="width: 100%;" onclick="addToCart('VIP Rank', 311040, 'Ultimate Rank')">BELI VIP &gt;</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CRATE KEYS SECTION -->
+  <section class="section-container" id="crates">
+    <div style="margin-bottom: 20px;">
+      <span class="badge-tag">// RARE DROPS</span>
+      <h2 class="section-title" style="font-size: 2.2rem; font-weight: 800;">CRATE KEYS</h2>
+      <p class="section-desc">Buka crate dan dapatkan item langka untuk membantu petualanganmu.</p>
+    </div>
+
+    <div class="crates-grid">
+      
+      <!-- CRATE 1 -->
+      <div class="crate-card">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <div class="crate-icon" style="color: #27c93f;">📦</div>
+          <div>
+            <h4 style="font-weight: 800; color: #fff;">SPAWNERS CRATE</h4>
+            <p style="font-size: 0.8rem; color: #64748b;">1 key per purchase</p>
           </div>
         </div>
+        <div style="text-align: right;">
+          <div style="font-weight: 800; color: var(--cyan-primary);">Rp 8.000</div>
+          <button class="btn-cyan" style="padding: 4px 12px; font-size: 0.8rem; margin-top: 5px;" onclick="addToCart('Spawners Crate Key', 8000, '1 Key')">BELI &gt;</button>
+        </div>
+      </div>
 
+      <!-- CRATE 2 -->
+      <div class="crate-card">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <div class="crate-icon" style="color: #a855f7;">💎</div>
+          <div>
+            <h4 style="font-weight: 800; color: #fff;">AMETHYST CRATE</h4>
+            <p style="font-size: 0.8rem; color: #64748b;">1 key per purchase</p>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-weight: 800; color: var(--cyan-primary);">Rp 15.000</div>
+          <button class="btn-cyan" style="padding: 4px 12px; font-size: 0.8rem; margin-top: 5px;" onclick="addToCart('Amethyst Crate Key', 15000, '1 Key')">BELI &gt;</button>
+        </div>
+      </div>
+
+      <!-- CRATE 3 -->
+      <div class="crate-card">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <div class="crate-icon" style="color: #ff4d6d;">🔥</div>
+          <div>
+            <h4 style="font-weight: 800; color: #fff;">CRIMSON CRATE</h4>
+            <p style="font-size: 0.8rem; color: #64748b;">1 key per purchase</p>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-weight: 800; color: var(--cyan-primary);">Rp 7.000</div>
+          <button class="btn-cyan" style="padding: 4px 12px; font-size: 0.8rem; margin-top: 5px;" onclick="addToCart('Crimson Crate Key', 7000, '1 Key')">BELI &gt;</button>
+        </div>
+      </div>
+
+      <!-- CRATE 4 -->
+      <div class="crate-card">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <div class="crate-icon" style="color: #3b82f6;">⚡</div>
+          <div>
+            <h4 style="font-weight: 800; color: #fff;">COBALT CRATE</h4>
+            <p style="font-size: 0.8rem; color: #64748b;">1 key per purchase</p>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-weight: 800; color: var(--cyan-primary);">Rp 5.000</div>
+          <button class="btn-cyan" style="padding: 4px 12px; font-size: 0.8rem; margin-top: 5px;" onclick="addToCart('Cobalt Crate Key', 5000, '1 Key')">BELI &gt;</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MODAL LOGIN IDENTITAS PLAYER -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>MASUKKAN IDENTITAS PLAYER</h3>
+        <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+      </div>
+      <p>Pilih bahasa dan masukkan username player agar item otomatis masuk ke akun kamu setelah pembayaran.</p>
+      
+      <form id="player-form" onsubmit="savePlayer(event)">
         <div class="form-group">
-          <label data-i18n="ign_label">USERNAME MINECRAFT (IGN):</label>
-          <input type="text" id="player-ign" placeholder="Contoh: Westernish" required />
+          <label>USERNAME MINECRAFT (IGN):</label>
+          <input type="text" id="input-ign" placeholder="Contoh: Westernish" required />
         </div>
 
         <div class="form-group">
-          <label data-i18n="edition_label">EDISI MINECRAFT:</label>
+          <label>EDISI MINECRAFT:</label>
           <div class="edition-selector">
             <label class="edition-option">
-              <input type="radio" name="edition" value="JAVA" id="edition-java" />
+              <input type="radio" name="edition" value="Java" checked />
               <span class="edition-box">Java Edition</span>
             </label>
             <label class="edition-option">
-              <input type="radio" name="edition" value="BEDROCK" id="edition-bedrock" />
+              <input type="radio" name="edition" value="Bedrock" />
               <span class="edition-box">Bedrock Edition</span>
             </label>
           </div>
         </div>
 
-        <button type="submit" class="btn-primary" style="width: 100%; cursor: pointer;" data-i18n="btn_enter">
-          Simpan &amp; Masuk Ke Store &rarr;
-        </button>
+        <button type="submit" class="btn-cyan" style="width: 100%; padding: 12px; margin-top: 10px;">Simpan & Masuk Ke Store &rarr;</button>
       </form>
     </div>
   </div>
 
-  <!-- NAVBAR STYLE SPACESHIP -->
-  <nav class="navbar">
-    <div class="nav-brand">
-      <div class="brand-logo" onclick="showCategorySelection()" style="cursor: pointer;">Indox<span class="gradient-text">SMP</span></div>
-    </div>
-    <div class="nav-links">
-      <a href="javascript:void(0)" onclick="openCategory('ranks')">RANKS</a>
-      <a href="javascript:void(0)" onclick="openCategory('crates')">CRATES</a>
-      
-      <!-- DROPDOWN AKUN / SETTINGS -->
-      <div class="user-dropdown-container">
-        <button id="user-menu-btn" class="player-info-badge">
-          <span id="display-flag">🇮🇩</span>
-          <span id="display-ign">Guest</span>
-          <span class="dots-icon">⋮</span>
-        </button>
-        <div id="user-dropdown-menu" class="dropdown-menu">
-          <div class="dropdown-header">
-            <div class="dropdown-ign" id="menu-ign">Guest</div>
-            <div class="dropdown-sub" id="menu-edition">Java Edition</div>
-          </div>
-          <div class="dropdown-divider"></div>
-          <button onclick="openCategory('ranks')" class="dropdown-item">
-            💎 <span data-i18n="menu_ranks">Lihat Ranks</span>
-          </button>
-          <button onclick="openCategory('crates')" class="dropdown-item">
-            🔑 <span data-i18n="menu_crates">Lihat Crate Keys</span>
-          </button>
-          <div class="dropdown-divider"></div>
-          <button id="open-settings-btn" class="dropdown-item">
-            ⚙️ <span data-i18n="menu_settings">Pengaturan Akun &amp; Bahasa</span>
-          </button>
-          <button id="logout-btn" class="dropdown-item text-danger">
-            🚪 <span data-i18n="menu_logout">Ganti Akun</span>
-          </button>
-          <button id="exit-btn" class="dropdown-item text-danger" style="font-weight: 700;">
-            ❌ <span data-i18n="menu_exit">Keluar (Reset Store)</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- KERANJANG BENERAN (AKAN MENAMBAH ITEM DENGAN SISTEM CART) -->
-      <a href="article.html" class="cart-btn">
-        🛒 <span data-i18n="nav_cart">Keranjang</span> <span class="cart-badge" id="cart-count">0</span>
-      </a>
-    </div>
-  </nav>
-
-  <!-- HERO SECTION -->
-  <section class="hero" id="hero-section">
-    <div class="hero-content">
-      <div class="badge-pill">OFFICIAL INDOXSMP STORE</div>
-      <h1 class="hero-title">Upgrade Your<br><span class="gradient-text">Adventure.</span></h1>
-      <p class="hero-sub" data-i18n="hero_sub">Rank eksklusif, crate langka, dan benefit terbaik untuk pengalaman bermain di IndoxSMP.</p>
-      
-      <div class="welcome-banner" id="welcome-message-box">
-        <span id="welcome-text">Hi, Guest! Selamat datang di IndoxSMP Store. Siap meningkatkan petualanganmu?</span>
-      </div>
-
-      <div class="hero-actions">
-        <div class="ip-card">
-          <div class="ip-info">
-            <span class="ip-label" data-i18n="server_address">ALAMAT SERVER</span>
-            <span class="ip-value">indoxsmp.net</span>
-          </div>
-          <button class="btn-copy" id="btn-copy-ip" onclick="navigator.clipboard.writeText('indoxsmp.net')">📋 <span data-i18n="btn_copy">Salin</span></button>
-        </div>
-        <button onclick="showCategorySelection()" class="btn-primary" data-i18n="btn_continue">Continue to Store &rarr;</button>
-      </div>
-    </div>
-
-    <div class="hero-card-preview">
-      <div class="preview-header">
-        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-        <span class="preview-title-bar">indoxsmp.net/store</span>
-      </div>
-      <div class="preview-body">
-        <div id="preview-avatar-container">
-          <div class="preview-avatar">🔥</div>
-        </div>
-        <h3 id="preview-player-title">INDOX SMP Store</h3>
-        <p data-i18n="hero_card_desc">Tingkatkan pengalaman bermainmu di INDOX SMP</p>
-        <div class="preview-status"><span class="status-indicator"></span> Server Online</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SELECTION PAGE -->
-  <section id="selection-section" class="section-container" style="display: none;">
-    <div class="section-header" style="text-align: center;">
-      <div class="badge-tag">STORE CATEGORIES</div>
-      <h2 class="section-title" data-i18n="select_category_title">Pilih Kategori Store</h2>
-      <p class="section-desc" data-i18n="select_category_desc">Silakan pilih kategori produk yang ingin kamu jelajahi.</p>
-    </div>
-
-    <div class="store-selection-container">
-      <div class="selection-card" onclick="openCategory('ranks')">
-        <div class="selection-icon">💎</div>
-        <h3>RANKS</h3>
-        <p data-i18n="cat_ranks_desc">Akses fitur eksklusif, kit khusus, dan /sfly.</p>
-        <br />
-        <button class="btn-primary" style="width: 100%;" data-i18n="btn_open_ranks">Buka Ranks &rarr;</button>
-      </div>
-
-      <div class="selection-card" onclick="openCategory('crates')">
-        <div class="selection-icon">🔑</div>
-        <h3>CRATE KEYS</h3>
-        <p data-i18n="cat_crates_desc">Buka crate langka dan dapatkan spawner &amp; gear epik.</p>
-        <br />
-        <button class="btn-primary" style="width: 100%;" data-i18n="btn_open_crates">Buka Crates &rarr;</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- RANKS SECTION (Item VIP, MVP, & INDOX Rank disesuaikan ke fungsi Cart) -->
-  <section id="ranks" class="section-container" style="display: none;">
-    <span class="category-back-btn" onclick="showCategorySelection()" data-i18n="btn_back_category">&larr; Kembali ke Pilih Kategori</span>
-    <div class="section-header">
-      <div>
-        <div class="badge-tag">Ranks</div>
-        <h2 class="section-title" data-i18n="rank_section_title">Pilih Rank Kamu</h2>
-      </div>
-      <p class="section-desc" data-i18n="rank_section_desc">Semakin tinggi rank, semakin banyak akses dan benefit yang kamu dapatkan di dalam server.</p>
-    </div>
-
-    <div class="ranks-grid">
-      <!-- 01 VIP Rank -->
-      <div class="rank-card">
-        <div class="rank-header">
-          <span class="rank-badge">01</span>
-          <span class="rank-type-pill" data-i18n="badge_popular">POPULAR</span>
-        </div>
-        <h3 class="rank-name">VIP Rank</h3>
-        <p class="rank-desc">Rank Pemula</p>
-        
-        <div class="price-container">
-          <div class="rank-price">Rp 25.000</div>
-        </div>
-        
-        <ul class="features">
-          <li>✓ Prefix [VIP] di Chat</li>
-          <li>✓ Akses /fly di Lobby</li>
-          <li>✓ 3x Sethome</li>
-        </ul>
-        <button onclick="addToCart('VIP Rank', 25000, 'Permanent Rank')" class="btn-card" data-i18n="add_to_cart">+ Keranjang</button>
-      </div>
-
-      <!-- 02 MVP Rank (Featured Highlight) -->
-      <div class="rank-card featured-highlight">
-        <div class="featured-ribbon">BEST VALUE</div>
-        <div class="rank-header">
-          <span class="rank-badge">02</span>
-          <span class="rank-type-pill" data-i18n="rank_type_perm">PERMANEN</span>
-        </div>
-        <h3 class="rank-name">MVP Rank</h3>
-        <p class="rank-desc">Rank Terfavorit</p>
-        
-        <div class="price-container">
-          <div class="rank-price">Rp 50.000</div>
-        </div>
-        
-        <ul class="features">
-          <li>✓ Prefix [MVP] di Chat</li>
-          <li>✓ Akses /fly di semua Server</li>
-          <li>✓ 5x Sethome</li>
-          <li>✓ Priority Queue</li>
-        </ul>
-        <button onclick="addToCart('MVP Rank', 50000, 'Permanent Rank')" class="btn-card btn-primary-card" data-i18n="add_to_cart">+ Keranjang</button>
-      </div>
-
-      <!-- 03 INDOX Rank -->
-      <div class="rank-card">
-        <div class="rank-header">
-          <span class="rank-badge">03</span>
-          <span class="rank-type-pill" data-i18n="badge_ultimate">LEGEND</span>
-        </div>
-        <h3 class="rank-name">INDOX Rank</h3>
-        <p class="rank-desc">Pengalaman Ultimate</p>
-        
-        <div class="price-container">
-          <div class="rank-price">Rp 100.000</div>
-        </div>
-        
-        <ul class="features">
-          <li>✓ Prefix Exclusiv [INDOX]</li>
-          <li>✓ Fitur Khusus & Vault</li>
-          <li>✓ 10x Sethome</li>
-          <li>✓ Custom Cosmetic Kit</li>
-        </ul>
-        <button onclick="addToCart('INDOX Rank', 100000, 'Permanent Rank')" class="btn-card" data-i18n="add_to_cart">+ Keranjang</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- CRATES SECTION -->
-  <section id="crates" class="section-container" style="display: none;">
-    <span class="category-back-btn" onclick="showCategorySelection()" data-i18n="btn_back_category">&larr; Kembali ke Pilih Kategori</span>
-    <div class="section-header">
-      <div>
-        <div class="badge-tag">RARE KEYS</div>
-        <h2 class="section-title">Crate Keys</h2>
-      </div>
-      <p class="section-desc" data-i18n="crate_section_desc">Buka crate dan dapatkan item langka untuk membantu petualanganmu.</p>
-    </div>
-
-    <div class="ranks-grid">
-      <div class="rank-card">
-        <div class="rank-header">
-          <span class="rank-type-pill" data-i18n="crate_tag">CRATE LANGKA</span>
-        </div>
-        <h3 class="rank-name">SPAWNERS</h3>
-        <p class="rank-desc">1 kunci per pembelian</p>
-        <div class="price-container"><div class="rank-price">Rp 8.000</div></div>
-        <ul class="features">
-          <li>✓ Dapatkan Spawner Mob Langka</li>
-          <li>✓ Pengiriman Kunci Instant</li>
-        </ul>
-        <button onclick="addToCart('Spawners Crate Key', 8000, 'Rare Crate')" class="btn-card" data-i18n="add_to_cart">+ Keranjang</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- NOTIFIKASI TOAST -->
-  <div id="toast-notification" class="toast-hidden"></div>
+  <!-- TOAST NOTIFIKASI -->
+  <div id="toast-notification" class="toast-hidden">Item ditambahkan ke keranjang!</div>
 
   <script>
-    const translations = {
-      id: {
-        modal_title: "MASUKKAN IDENTITAS PLAYER",
-        modal_desc: "Pilih bahasa dan masukkan data player agar item otomatis masuk ke dalam akun kamu setelah pembayaran.",
-        lang_label: "PILIH BAHASA / SELECT LANGUAGE:",
-        ign_label: "USERNAME MINECRAFT (IGN):",
-        edition_label: "EDISI MINECRAFT:",
-        btn_enter: "Simpan & Masuk Ke Store →",
-        nav_cart: "Keranjang",
-        menu_ranks: "Lihat Ranks",
-        menu_crates: "Lihat Crate Keys",
-        menu_settings: "Pengaturan Akun & Bahasa",
-        menu_logout: "Ganti Akun",
-        menu_exit: "Keluar (Reset Store)",
-        hero_sub: "Rank eksklusif, crate langka, dan benefit terbaik untuk pengalaman bermain di IndoxSMP.",
-        server_address: "ALAMAT SERVER",
-        btn_copy: "Salin",
-        btn_continue: "Continue to Store →",
-        hero_card_desc: "Tingkatkan pengalaman bermainmu di INDOX SMP",
-        select_category_title: "Pilih Kategori Store",
-        select_category_desc: "Silakan pilih kategori produk yang ingin kamu jelajahi.",
-        cat_ranks_desc: "Akses fitur eksklusif, kit khusus, dan /sfly.",
-        cat_crates_desc: "Buka crate langka dan dapatkan spawner & gear epik.",
-        btn_open_ranks: "Buka Ranks →",
-        btn_open_crates: "Buka Crates →",
-        btn_back_category: "← Kembali ke Pilih Kategori",
-        rank_section_title: "Pilih Rank Kamu",
-        rank_section_desc: "Semakin tinggi rank, semakin banyak akses dan benefit yang kamu dapatkan di dalam server.",
-        rank_type_perm: "PERMANEN",
-        badge_popular: "POPULER",
-        badge_ultimate: "ULTIMATE",
-        add_to_cart: "+ Keranjang",
-        toast_added: "berhasil ditambahkan ke keranjang!",
-        welcome_prefix: "Hi, ",
-        welcome_suffix: "! Selamat datang di IndoxSMP Store. Siap meningkatkan petualanganmu?"
-      },
-      en: {
-        modal_title: "ENTER PLAYER IDENTITY",
-        modal_desc: "Select language and enter player info so items automatically deliver to your account after payment.",
-        lang_label: "PILIH BAHASA / SELECT LANGUAGE:",
-        ign_label: "MINECRAFT USERNAME (IGN):",
-        edition_label: "MINECRAFT EDITION:",
-        btn_enter: "Save & Enter Store →",
-        nav_cart: "Cart",
-        menu_ranks: "View Ranks",
-        menu_crates: "View Crate Keys",
-        menu_settings: "Account & Language Settings",
-        menu_logout: "Switch Account",
-        menu_exit: "Exit (Reset Store)",
-        hero_sub: "Exclusive ranks, rare crates, and the best perks for your IndoxSMP experience.",
-        server_address: "SERVER ADDRESS",
-        btn_copy: "Copy",
-        btn_continue: "Continue to Store →",
-        hero_card_desc: "Upgrade your experience on INDOX SMP",
-        select_category_title: "Select Store Category",
-        select_category_desc: "Please select which product category you wish to explore.",
-        cat_ranks_desc: "Access exclusive features, special kits, and /sfly.",
-        cat_crates_desc: "Open rare crates and receive spawners & epic gear.",
-        btn_open_ranks: "Open Ranks →",
-        btn_open_crates: "Open Crates →",
-        btn_back_category: "← Back to Categories",
-        rank_section_title: "Choose Your Rank",
-        rank_section_desc: "The higher your rank, the more features and benefits you unlock in-game.",
-        rank_type_perm: "PERMANENT",
-        badge_popular: "POPULAR",
-        badge_ultimate: "ULTIMATE",
-        add_to_cart: "+ Add To Cart",
-        toast_added: "added to cart successfully!",
-        welcome_prefix: "Hi, ",
-        welcome_suffix: "! Welcome to IndoxSMP Store. Ready to upgrade your adventure?"
-      }
-    };
-
     let cart = JSON.parse(localStorage.getItem('indox_cart')) || [];
     let playerData = JSON.parse(localStorage.getItem('indox_player')) || null;
 
-    function applyLanguage(lang) {
-      const dict = translations[lang] || translations.id;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (dict[key]) el.innerText = dict[key];
-      });
-      document.documentElement.lang = lang;
-      const currentIgn = playerData ? playerData.ign : 'Guest';
-      document.getElementById('welcome-text').innerText = `${dict.welcome_prefix}${currentIgn}${dict.welcome_suffix}`;
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartCount();
+      updatePlayerUI();
+      if (!playerData) {
+        openLoginModal();
+      }
+    });
+
+    function openLoginModal() {
+      document.getElementById('login-modal').style.display = 'flex';
     }
 
-    function updateCartBadge() {
-      const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
-      document.getElementById('cart-count').innerText = totalItems;
+    function closeLoginModal() {
+      document.getElementById('login-modal').style.display = 'none';
     }
 
-    function showToast(itemName) {
-      const lang = playerData ? playerData.lang : 'id';
-      const toastText = translations[lang].toast_added;
-      const toast = document.getElementById('toast-notification');
-      toast.innerText = `✓ "${itemName}" ${toastText}`;
-      toast.className = "toast-visible";
-      setTimeout(() => { toast.className = "toast-hidden"; }, 3000);
+    function savePlayer(e) {
+      e.preventDefault();
+      const ign = document.getElementById('input-ign').value.trim();
+      const edition = document.querySelector('input[name="edition"]:checked').value;
+
+      if (!ign) return;
+
+      playerData = { ign, edition };
+      localStorage.setItem('indox_player', JSON.stringify(playerData));
+
+      updatePlayerUI();
+      closeLoginModal();
+    }
+
+    function updatePlayerUI() {
+      if (playerData && playerData.ign) {
+        // Update di Nav Header
+        document.getElementById('user-header-area').innerHTML = `
+          <div onclick="openLoginModal()" style="cursor: pointer; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 20px; border: 1px solid var(--dark-border);">
+            <img src="https://mc-heads.net/avatar/${playerData.ign}/24" style="width:20px; height:20px; border-radius:4px;" />
+            <span style="font-weight: 700; color: #fff; font-size: 0.9rem;">${playerData.ign}</span>
+          </div>
+        `;
+
+        // Update di Hero Section dengan Skin Real-time dari API
+        document.getElementById('player-ign-display').innerText = playerData.ign;
+        document.getElementById('player-edition-display').innerText = playerData.edition + ' Edition';
+        document.getElementById('player-avatar-head').src = `https://mc-heads.net/avatar/${playerData.ign}/64`;
+      }
     }
 
     function addToCart(name, price, sub) {
       if (!playerData) {
-        document.getElementById('gateway-modal').style.display = 'flex';
+        openLoginModal();
         return;
       }
-      const existing = cart.find(i => i.name === name);
-      if (existing) {
-        existing.qty += 1;
+
+      const existingItem = cart.find(item => item.name === name);
+      if (existingItem) {
+        existingItem.qty += 1;
       } else {
         cart.push({ name, price, sub, qty: 1 });
       }
+
       localStorage.setItem('indox_cart', JSON.stringify(cart));
-      updateCartBadge();
-      showToast(name);
+      updateCartCount();
+      showToast(`${name} berhasil ditambahkan!`);
     }
 
-    function hideAllSections() {
-      document.getElementById('hero-section').style.display = 'none';
-      document.getElementById('selection-section').style.display = 'none';
-      document.getElementById('ranks').style.display = 'none';
-      document.getElementById('crates').style.display = 'none';
+    function updateCartCount() {
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cart-count').innerText = count;
     }
 
-    function showCategorySelection() {
-      if (!playerData) {
-        document.getElementById('gateway-modal').style.display = 'flex';
-        return;
-      }
-      hideAllSections();
-      document.getElementById('selection-section').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      toast.innerText = msg;
+      toast.className = 'toast-visible';
+      setTimeout(() => {
+        toast.className = 'toast-hidden';
+      }, 2500);
     }
 
-    function openCategory(category) {
-      if (!playerData) {
-        document.getElementById('gateway-modal').style.display = 'flex';
-        return;
-      }
-      hideAllSections();
-      if (category === 'ranks') {
-        document.getElementById('ranks').style.display = 'block';
-      } else if (category === 'crates') {
-        document.getElementById('crates').style.display = 'block';
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    function copyIP() {
+      navigator.clipboard.writeText('indoxsmp.net');
+      showToast('IP indoxsmp.net disalin!');
     }
-
-    // Modal, User Menu, dan Gateway Handler
-    document.addEventListener('DOMContentLoaded', () => {
-      updateCartBadge();
-
-      const modal = document.getElementById('gateway-modal');
-      const form = document.getElementById('gateway-form');
-      const userBtn = document.getElementById('user-menu-btn');
-      const dropdown = document.getElementById('user-dropdown-menu');
-
-      if (playerData) {
-        applyLanguage(playerData.lang);
-        document.getElementById('display-ign').innerText = playerData.ign;
-        document.getElementById('display-flag').innerText = playerData.lang === 'en' ? '🇬🇧' : '🇮🇩';
-        document.getElementById('menu-ign').innerText = playerData.ign;
-        document.getElementById('menu-edition').innerText = playerData.edition === 'BEDROCK' ? 'Bedrock Edition' : 'Java Edition';
-      }
-
-      userBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle('active');
-      });
-
-      document.addEventListener('click', () => {
-        dropdown.classList.remove('active');
-      });
-
-      document.getElementById('open-settings-btn').addEventListener('click', () => {
-        dropdown.classList.remove('active');
-        if (playerData) {
-          document.getElementById('player-ign').value = playerData.ign;
-        }
-        modal.style.display = 'flex';
-      });
-
-      document.getElementById('close-modal-btn').addEventListener('click', () => {
-        modal.style.display = 'none';
-      });
-
-      document.getElementById('logout-btn').addEventListener('click', () => {
-        localStorage.removeItem('indox_player');
-        location.reload();
-      });
-
-      document.getElementById('exit-btn').addEventListener('click', () => {
-        localStorage.clear();
-        location.reload();
-      });
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const ign = document.getElementById('player-ign').value.trim();
-        const lang = form.querySelector('input[name="language"]:checked').value;
-        const edition = form.querySelector('input[name="edition"]:checked')?.value || 'JAVA';
-
-        playerData = { ign, lang, edition };
-        localStorage.setItem('indox_player', JSON.stringify(playerData));
-
-        document.getElementById('display-ign').innerText = ign;
-        document.getElementById('display-flag').innerText = lang === 'en' ? '🇬🇧' : '🇮🇩';
-        document.getElementById('menu-ign').innerText = ign;
-        document.getElementById('menu-edition').innerText = edition === 'BEDROCK' ? 'Bedrock Edition' : 'Java Edition';
-
-        applyLanguage(lang);
-        modal.style.display = 'none';
-      });
-    });
   </script>
 </body>
 </html>
